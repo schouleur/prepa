@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entraînements – Sujets et rapports de concours BCPST</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bleu-nuit: #2f4858;
+    --bleu-moyen: #33658a;
+    --bleu-clair: #86bbd8;
+    --or: #f6ae2d;
+    --fond: #f4f2ee;
+    --fond-carte: #ffffff;
+    --texte: #2a2a2a;
+    --texte-doux: #5a6370;
+    --bordure: #ddd8d0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fond);
+    color: var(--texte);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--bleu-nuit);
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--or), var(--bleu-clair));
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .site-name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--bleu-clair);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .site-name a { color: inherit; text-decoration: none; }
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+  .header-desc {
+    color: var(--bleu-clair);
+    font-size: 0.9rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .header-nav {
+    margin-top: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .header-nav a {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(134,187,216,0.4);
+    border-radius: 100px;
+    color: var(--bleu-clair);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+  }
+  .header-nav a:hover {
+    background: var(--or);
+    border-color: var(--or);
+    color: var(--bleu-nuit);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── SECTIONS PRINCIPALES ── */
+  .section-block {
+    margin-bottom: 3rem;
+  }
+  .section-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--or);
+    margin-bottom: 1.2rem;
+  }
+  .section-intro {
+    color: var(--texte-doux);
+    font-size: 0.93rem;
+    max-width: 800px;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+  .section-intro a { color: var(--bleu-moyen); }
+
+  /* ── GRILLE DE THÉMATIQUES (sujets oral) ── */
+  .thematiques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1rem;
+  }
+  .thematique-card {
+    background: var(--fond-carte);
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .thematique-header {
+    background: var(--bleu-nuit);
+    color: #fff;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .thematique-body {
+    padding: 0.5rem 0;
+  }
+
+  /* ── ACCORDION ── */
+  details {
+    border-bottom: 1px solid var(--bordure);
+  }
+  details:last-child { border-bottom: none; }
+  summary {
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: var(--bleu-moyen);
+    font-weight: 500;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  summary:hover { background: #f0f4f8; }
+  summary::before {
+    content: '▶';
+    font-size: 0.6rem;
+    color: var(--or);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+  details[open] > summary { color: var(--bleu-nuit); }
+  .details-content {
+    padding: 0.4rem 1rem 0.8rem 2rem;
+  }
+  .details-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  .details-content ul li {
+    font-size: 0.87rem;
+    color: var(--texte);
+    padding: 0.2rem 0;
+    border-bottom: 1px dotted #e5e1db;
+    line-height: 1.5;
+  }
+  .details-content ul li:last-child { border-bottom: none; }
+  .details-content ul li a {
+    color: var(--bleu-moyen);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .details-content ul li a:hover { color: var(--or); text-decoration: underline; }
+
+  /* ── CONCOURS GRID (sujets écrit & docs) ── */
+  .concours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+  .concours-card {
+    background: var(--fond-carte);
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .concours-card-header {
+    background: var(--bleu-moyen);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .concours-card-header.ens { background: #4a7c59; }
+  .concours-card-header.agregation { background: #7a4f6d; }
+  .concours-card-header.g2e { background: #5c6d7e; }
+  .concours-card-body { padding: 0.5rem 0; }
+
+  /* ── SOUS-SECTIONS (Sciences de la vie / de la Terre) ── */
+  .sous-section-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bleu-nuit);
+    margin: 2rem 0 1rem;
+    padding-left: 0.8rem;
+    border-left: 3px solid var(--or);
+  }
+
+  /* ── PDF LIEN ── */
+  .pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bleu-nuit);
+    color: #fff;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    text-decoration: none;
+    margin: 0.5rem 0 1rem 0;
+    transition: background 0.2s;
+  }
+  .pdf-link:hover { background: var(--bleu-moyen); }
+  .pdf-link::before { content: '📄'; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bleu-nuit);
+    color: var(--bleu-clair);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--or); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .thematiques-grid, .concours-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="site-name"><a href="https://astrantia.net/">ASTRANTIA.NET — les SVT en prépa</a></p>
+    <h1>Entraînements</h1>
+    <p class="header-desc">Sujets de concours BCPST classés par thématique, avec liens vers les rapports de jury.</p>
+    <nav class="header-nav">
+      <a href="#oral">Synthèse oral</a>
+      <a href="#ecrit">Synthèse écrit</a>
+      <a href="#documents">Analyse de documents</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════
+     PARTIE 1 : SUJETS DE SYNTHÈSE ORAL
+═══════════════════════════════════════════ -->
+<div class="section-block" id="oral">
+  <h2 class="section-title">Sujets de synthèse oral</h2>
+  <p class="section-intro">
+    Liste des sujets d'oraux donnés au concours Agro-Véto ces dernières années. Triés par thématique dominante du programme pour plus de lisibilité, ces sujets font souvent appel à des notions qui vont au-delà de cette thématique.
+    Liste mise à jour en 2024, suite au rapport de concours agro-véto.<br><br>
+    <a class="pdf-link" href="http://astrantia.net/documents-telechargeables/Sujets-oral-2023.pdf">Version compacte PDF (2023)</a>
+  </p>
+
+  <div class="thematiques-grid">
+
+    <!-- SV-A -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-A — L'organisme vivant en lien avec son environnement</div>
+      <div class="thematique-body">
+        <details><summary>SV-A-1 Regards sur un organisme Métazoaire : un Bovidé</summary>
+          <div class="details-content"><ul>
+            <li>Prise alimentaire et digestion chez les Animaux</li>
+            <li>Les gaz et la vache</li>
+            <li>Les fonctions de nutrition des Animaux</li>
+            <li>La fonction de nutrition, en liaison avec les autres fonctions de l'organisme</li>
+            <li>Caractères fondamentaux et diversité des surfaces d'échanges chez les Métazoaires</li>
+            <li>À partir de l'exemple de la vache, montrez l'importance des relations inter et intra-spécifiques</li>
+            <li>La place de la vache dans son écosystème</li>
+            <li>La vache dans son environnement</li>
+            <li>La vache, un holobionte</li>
+            <li>La vie animale en milieu aérien</li>
+            <li>La vie animale en milieu aquatique</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-A-2 Regards sur un organisme Angiosperme : une Fabacée</summary>
+          <div class="details-content"><ul>
+            <li>Importance des relations interspécifiques dans la vie des Angiospermes</li>
+            <li>Les interactions entre les Angiospermes et leur environnement abiotique</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-A-3 Regards sur les organismes unicellulaires</summary>
+          <div class="details-content"><ul>
+            <li>La diversité des unicellulaires</li>
+            <li>Qu'est-ce qu'un unicellulaire ?</li>
+          </ul></div>
+        </details>
+        <details><summary>Sujets transversaux SVA</summary>
+          <div class="details-content"><ul>
+            <li>Les liquides circulants chez les êtres vivants</li>
+            <li>La vie en milieu aérien : comparaison des végétaux et des animaux</li>
+            <li>La vie en milieu aquatique</li>
+            <li>Le dioxygène et les êtres vivants</li>
+            <li>Les surfaces d'échange chez les êtres vivants</li>
+            <li>De l'azote chez une Fabacée à l'azote chez la vache</li>
+            <li>La cellulose, de sa synthèse chez une Angiosperme à sa digestion chez la vache</li>
+            <li>Les fonctions de relation : exemples chez un Bovidé et chez une Fabacée</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-B -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-B — Interactions entre les organismes et leur milieu de vie</div>
+      <div class="thematique-body">
+        <details><summary>SV-B-1 La respiration : une fonction en interaction directe avec le milieu</summary>
+          <div class="details-content"><ul>
+            <li>Comparaison branchies / poumons</li>
+            <li>Respirer dans l'eau</li>
+            <li>Respiration et milieux de vie chez les animaux</li>
+            <li>Respiration et milieux de vie chez les Vertébrés</li>
+            <li>Les transports et échanges de gaz respiratoires chez les organismes animaux</li>
+            <li>Sang et transport des gaz respiratoires</li>
+            <li>L'approvisionnement des cellules en dioxygène chez les Animaux</li>
+            <li>Les surfaces d'échanges respiratoires chez les animaux</li>
+            <li>Du dioxygène atmosphérique à son entrée dans la cellule animale</li>
+            <li>L'hémoglobine, relation structure / fonction</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-B-2 Nutrition des Angiospermes en lien avec le milieu</summary>
+          <div class="details-content"><ul>
+            <li>La racine, relation structure-fonction</li>
+            <li>Le flux hydrique du sol à l'atmosphère chez les Angiospermes</li>
+            <li>Les sèves</li>
+            <li>La circulation des sèves</li>
+            <li>Les végétaux aériens et l'eau</li>
+            <li>Le carbone, de l'atmosphère à un organe de réserve chez les végétaux</li>
+            <li>La feuille, diversité cellulaire et unité fonctionnelle</li>
+            <li>La vie d'un végétal au cours des saisons</li>
+            <li>Vie des végétaux, des êtres vivants fixés</li>
+            <li>Interdépendance des organes aériens et souterrains des végétaux</li>
+            <li>Vie végétative des végétaux et milieu aérien</li>
+            <li>Vie des végétaux et variabilité du milieu aérien à différentes échelles de temps</li>
+            <li>Le CO2 et les organismes végétaux</li>
+            <li>Les végétaux et la lumière</li>
+            <li>Les échanges gazeux entre les êtres vivants et le milieu aérien</li>
+            <li>La vie en milieu aérien : comparaison des végétaux et des animaux</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-B-3 Développement post-embryonnaire des Angiospermes</summary>
+          <div class="details-content"><ul>
+            <li>La croissance des végétaux</li>
+            <li>Cellules méristématiques et cellules différenciées chez les Angiospermes</li>
+            <li>Le méristème apical caulinaire</li>
+            <li>Le contrôle du développement post-embryonnaire des Angiospermes</li>
+            <li>Les fleurs des Angiospermes</li>
+            <li>Les végétaux aériens et l'eau</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-C -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-C — La cellule dans son environnement</div>
+      <div class="thematique-body">
+        <details><summary>SV-C-1 Les cellules au sein d'un organisme</summary>
+          <div class="details-content"><ul>
+            <li>Les matrices extra-cellulaires</li>
+            <li>La paroi des cellules végétales</li>
+            <li>Comparaison des matrices extracellulaires animale et végétale</li>
+            <li>Comparaison tissu épithélial – tissu conjonctif</li>
+            <li>Les cellules au sein d'un tissu</li>
+            <li>Qu'est-ce qu'un tissu ?</li>
+            <li>Qu'est-ce qu'un tissu végétal ?</li>
+            <li>Qu'est-ce qu'un tissu animal ?</li>
+            <li>Comparaison des tissus animaux et végétaux</li>
+            <li>La cohésion des tissus</li>
+            <li>Les épithéliums</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-C-2 Organisation fonctionnelle de la cellule</summary>
+          <div class="details-content"><ul>
+            <li>Qu'est-ce qu'une cellule ?</li>
+            <li>Qu'est-ce qu'une cellule eucaryote ?</li>
+            <li>Unité et diversité de l'organisation des cellules du vivant</li>
+            <li>Comparaison cellule animale – cellule végétale</li>
+            <li>Comparaison cellule eucaryote – cellule bactérienne</li>
+            <li>Les bactéries : organisation et rôles chez leurs hôtes holobiontes</li>
+            <li>Les bactéries au sein des holobiontes et des écosystèmes</li>
+            <li>La compartimentation intracellulaire</li>
+            <li>Les cellules végétales</li>
+            <li>Les cellules spécialisées</li>
+            <li>Le cytosquelette</li>
+            <li>Le cytosquelette et ses rôles dans la vie cellulaire</li>
+            <li>Les flux traversant les cellules</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-C-3 Membranes et échanges membranaires</summary>
+          <div class="details-content"><ul>
+            <li>Membranes et échanges</li>
+            <li>Les échanges de matière entre cellule et milieu extracellulaire</li>
+            <li>Les échanges transmembranaires dans la vie des cellules</li>
+            <li>Les échanges passifs à travers la membrane plasmique</li>
+            <li>Le passage des ions minéraux à travers les membranes</li>
+            <li>Les membranes et les ions</li>
+            <li>Perméabilité ionique et potentiels électriques transmembranaires</li>
+          </ul></div>
+        </details>
+        <details><summary>Sujets transversaux SVC</summary>
+          <div class="details-content"><ul>
+            <li>Structure et fonctions des membranes</li>
+            <li>Membranes intracellulaires et spécialisation des compartiments</li>
+            <li>Diversité des protéines membranaires</li>
+            <li>Diversité des fonctions des membranes et diversité de leurs protéines</li>
+            <li>Protéines membranaires et fonctions des membranes</li>
+            <li>Fonctions des protéines dans la membrane plasmique</li>
+            <li>La membrane plasmique : relation structure-fonction</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-D -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-D — Organisation fonctionnelle des molécules du vivant</div>
+      <div class="thematique-body">
+        <details><summary>SV-D-1 Les constituants du vivant</summary>
+          <div class="details-content"><ul>
+            <li>L'eau dans la cellule</li>
+            <li>L'importance biologique des liaisons non covalentes</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-D-2 Les grandes familles biochimiques</summary>
+          <div class="details-content"><ul>
+            <li>Lipides et vie cellulaire</li>
+            <li>La diversité des lipides du vivant</li>
+            <li>Diversité des glucides, diversité de leurs fonctions</li>
+            <li>Diversité des macromolécules glucidiques</li>
+            <li>Les oses dans un végétal vert : origines et devenirs</li>
+            <li>Importance biologique des oses et diosides</li>
+            <li>Glucides et cellule végétale</li>
+            <li>Glucose, amidon, cellulose</li>
+            <li>Comparaison ADN-ARN</li>
+            <li>Les nucléotides et leurs dérivés</li>
+            <li>Les acides aminés</li>
+            <li>Qu'est-ce qu'une protéine ?</li>
+            <li>La structure des protéines</li>
+            <li>De la séquence à la fonction des protéines</li>
+            <li>Des acides aminés à la protéine fonctionnelle</li>
+            <li>La conformation des protéines : origine et conséquences</li>
+            <li>Les changements de forme des protéines</li>
+            <li>Les protéines et leurs ligands</li>
+          </ul></div>
+        </details>
+        <details><summary>Sujets transversaux SVD</summary>
+          <div class="details-content"><ul>
+            <li>Les macromolécules</li>
+            <li>Monomères et polymères</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-E -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-E — Le métabolisme cellulaire</div>
+      <div class="thematique-body">
+        <details><summary>SV-E-1 L'approvisionnement en matière organique</summary>
+          <div class="details-content"><ul>
+            <li>Du carbone minéral au carbone organique dans une cellule végétale chlorophyllienne</li>
+            <li>Fixation et réduction du carbone minéral</li>
+            <li>Énergie lumineuse et autotrophie au carbone</li>
+            <li>Le chloroplaste, un organite compartimenté</li>
+            <li>Le CO2 et les organismes végétaux</li>
+            <li>L'autotrophie au carbone</li>
+            <li>Comparaison de l'autotrophie chez Nitrobacter et chez les Chlorophytes</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-E-2 Le devenir de la matière organique</summary>
+          <div class="details-content"><ul>
+            <li>Les mitochondries dans les cellules</li>
+            <li>Le catabolisme oxydatif</li>
+            <li>La respiration, de l'échelle cellulaire à celle de l'organisme</li>
+            <li>Le glucose dans la cellule animale</li>
+            <li>Origine et devenir du glucose chez les Animaux</li>
+            <li>Origine et devenir de la matière organique dans les cellules hétérotrophes</li>
+            <li>D'un aliment à l'ATP</li>
+            <li>Les aliments, source de matière et d'énergie de l'animal</li>
+            <li>Les oses dans un végétal vert : origines et devenirs</li>
+            <li>Importance biologique des oses et diosides</li>
+            <li>Glucides et cellule végétale</li>
+            <li>L'hétérotrophie des organismes animaux</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-E-3 Les enzymes et la catalyse des réactions</summary>
+          <div class="details-content"><ul>
+            <li>Qu'est-ce qu'une enzyme ?</li>
+            <li>Le site actif des enzymes</li>
+            <li>Les enzymes et les couplages énergétiques</li>
+            <li>Enzymes et énergie</li>
+            <li>Comparaison enzyme allostérique – enzyme michaelienne</li>
+            <li>Les variations de l'activité enzymatique</li>
+            <li>Les enzymes, des catalyseurs contrôlés</li>
+          </ul></div>
+        </details>
+        <details><summary>Sujets transversaux SVE</summary>
+          <div class="details-content"><ul>
+            <li>Les phosphorylations dans le vivant</li>
+            <li>La production de l'ATP dans les cellules</li>
+            <li>ATP et couplages énergétiques</li>
+            <li>Importance biologique de l'ATP</li>
+            <li>Organisation des membranes et conversion d'énergie</li>
+            <li>Couplages et conversions énergétiques</li>
+            <li>Importance biologique des transferts d'électrons dans le vivant</li>
+            <li>Oxydoréductions et métabolisme cellulaire</li>
+            <li>Les autotrophes dans le monde vivant</li>
+            <li>Les hétérotrophes dans le monde vivant</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-F -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-F — Génomique structurale et fonctionnelle</div>
+      <div class="thematique-body">
+        <details><summary>SV-F-1 Génome des cellules et des virus, transmission de l'information génétique</summary>
+          <div class="details-content"><ul>
+            <li>Le génome eucaryote</li>
+            <li>Qu'est-ce qu'un gène ?</li>
+            <li>Le contenu informatif des génomes</li>
+            <li>Comparaison génome viral – génome eucaryote</li>
+            <li>Comparaison du génome des bactéries, des Eucaryotes et des virus</li>
+            <li>Qu'est-ce qu'un virus ?</li>
+            <li>Les virus</li>
+            <li>Le cycle cellulaire</li>
+            <li>Le chromosome eucaryote au cours du cycle cellulaire</li>
+            <li>La stabilité de l'information génétique</li>
+            <li>La mitose</li>
+            <li>Comparaison mitose méiose</li>
+            <li>Les divisions cellulaires</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-F-2 L'expression du génome</summary>
+          <div class="details-content"><ul>
+            <li>Les ARN</li>
+            <li>Les rôles des ARN</li>
+            <li>Les ARNm</li>
+            <li>Les acides nucléiques, des vecteurs d'information</li>
+            <li>De l'ADN aux ARN</li>
+            <li>La synthèse des protéines</li>
+            <li>Compartimentation et expression du génome chez les Eucaryotes</li>
+            <li>Les organites semi-autonomes</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-F-3 Le contrôle de l'expression du génome</summary>
+          <div class="details-content"><ul>
+            <li>Le contrôle de l'expression de l'information génétique</li>
+            <li>Le contrôle de l'expression des gènes chez les Eucaryotes</li>
+            <li>Les facteurs modifiant l'expression des gènes</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-F-4 La diversification des génomes</summary>
+          <div class="details-content"><ul>
+            <li>Les allèles</li>
+            <li>La diversification des génomes</li>
+            <li>La variabilité du génome</li>
+            <li>Les sources de variation des génomes</li>
+            <li>Stabilité et variabilité de l'information génétique</li>
+            <li>Causes et conséquences des mutations</li>
+            <li>Les mutations</li>
+            <li>Stabilité et variabilité du patrimoine génétique au cours de la méiose</li>
+            <li>Les conséquences génétiques de la méiose</li>
+            <li>Le brassage chromosomique chez les Eucaryotes</li>
+            <li>Les brassages génétiques chez les Eucaryotes</li>
+            <li>Sexualité et brassage génétique</li>
+            <li>Haploïdie, diploïdie</li>
+          </ul></div>
+        </details>
+        <details><summary>Sujets transversaux SVF</summary>
+          <div class="details-content"><ul>
+            <li>La chromatine</li>
+            <li>Les processus de synthèse des polymères biologiques</li>
+            <li>Les transferts d'information génétique aux différentes échelles du vivant</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-G -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-G — Reproduction</div>
+      <div class="thematique-body">
+        <details><summary>SV-G-1 La reproduction sexuée chez les Embryophytes</summary>
+          <div class="details-content"><ul>
+            <li>Les fleurs des Angiospermes</li>
+            <li>Pollinisation et fécondation chez les Angiospermes</li>
+            <li>Fruits et graines des Angiospermes</li>
+            <li>Comparaison de la reproduction d'un polypode et d'une Angiosperme</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-G-2 La reproduction asexuée chez les Angiospermes</summary>
+          <div class="details-content"><ul>
+            <li>La reproduction des Angiospermes</li>
+            <li>Reproduction des végétaux et milieu aérien</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-G-3 La reproduction sexuée des Mammifères</summary>
+          <div class="details-content"><ul>
+            <li>Les gamètes mâle et femelle chez les Mammifères</li>
+          </ul></div>
+        </details>
+        <details><summary>Sujets transversaux SVG</summary>
+          <div class="details-content"><ul>
+            <li>Les gamètes chez les êtres vivants</li>
+            <li>Les gamètes mâles dans le vivant</li>
+            <li>Les gamètes, des cellules différenciées et spécialisées</li>
+            <li>Rapprochement des gamètes et fécondation chez les êtres vivants</li>
+            <li>Des gamètes à l'œuf chez les êtres vivants</li>
+            <li>La fécondation</li>
+            <li>La fécondation, un processus conservateur et source de diversité</li>
+            <li>Comparaison reproduction sexuée, reproduction asexuée : conséquences génétiques, biologiques et écologiques</li>
+            <li>Modalités de la reproduction et conséquences sur les populations</li>
+            <li>Reproduction et milieu de vie</li>
+            <li>Reproduction et dispersion</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-H -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-H — Mécanismes du développement</div>
+      <div class="thematique-body">
+        <details><summary>SV-H-1 Les étapes du développement embryonnaire chez les Vertébrés</summary>
+          <div class="details-content"><ul>
+            <li>Du zygote à l'organogenèse chez les embryons de Vertébrés</li>
+            <li>Symétrie et polarité chez les Vertébrés</li>
+            <li>Contribution des grandes étapes du développement embryonnaire à la mise en place du plan d'organisation</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-H-2 Développement du bourgeon de membre</summary>
+          <div class="details-content"><ul>
+            <li>Le développement du bourgeon de membre chiridien des Vertébrés Tétrapodes et son contrôle</li>
+            <li>Le développement du membre chiridien</li>
+            <li>Le membre chiridien</li>
+            <li>Le développement embryonnaire des Tétrapodes</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-H-3 Différenciation de la cellule musculaire striée squelettique</summary>
+          <div class="details-content"><ul>
+            <li>Les cellules musculaires striées</li>
+            <li>La différenciation cellulaire</li>
+            <li>Différenciation et fonctionnement de la cellule musculaire striée squelettique</li>
+            <li>Muscles striés squelettiques et cellules musculaires striées squelettiques</li>
+          </ul></div>
+        </details>
+        <details><summary>Sujets transversaux SVH</summary>
+          <div class="details-content"><ul>
+            <li>Les signaux de contrôle du développement</li>
+            <li>Les gènes du développement</li>
+            <li>Expression des génomes et développement des êtres vivants</li>
+            <li>Les communications intercellulaires au cours du développement des êtres vivants</li>
+            <li>Contrôles intercellulaires et intracellulaires au cours du développement</li>
+            <li>Multiplication cellulaire et différenciation cellulaire au cours du développement des êtres vivants</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-I -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-I — Communications intercellulaires et intégration d'une fonction à l'organisme</div>
+      <div class="thematique-body">
+        <details><summary>SV-I-1 La circulation sanguine chez les Mammifères</summary>
+          <div class="details-content"><ul>
+            <li>Diversité et spécialisation des différents segments vasculaires</li>
+            <li>Relation entre organisation et fonction du système cardiovasculaire des mammifères</li>
+            <li>Relation entre organisation et fonction du cœur</li>
+            <li>Le cœur des Mammifères</li>
+            <li>Le rythme cardiaque</li>
+            <li>Le contrôle de l'automatisme cardiaque</li>
+            <li>Le contrôle de l'activité cardiaque</li>
+            <li>La fonction circulatoire chez les animaux</li>
+            <li>À partir de l'exemple de la circulation, montrez ce qu'est une régulation en boucle</li>
+            <li>Respiration et circulation sanguine</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-I-2 Communications intercellulaires chez les Métazoaires</summary>
+          <div class="details-content"><ul>
+            <li>Le potentiel d'action neuronal</li>
+            <li>Canaux ioniques et communication</li>
+            <li>Les caractéristiques de la communication nerveuse</li>
+            <li>Le neurone, une cellule spécialisée</li>
+            <li>La communication hormonale</li>
+            <li>Le message nerveux</li>
+            <li>Comparaison communication nerveuse – communication hormonale</li>
+            <li>Les messagers chimiques</li>
+            <li>Les récepteurs aux messagers chimiques</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-J -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-J — Populations et écosystèmes</div>
+      <div class="thematique-body">
+        <details><summary>SV-J-1 Les populations et leur démographie</summary>
+          <div class="details-content"><ul>
+            <li>Les effectifs des populations et leurs variations</li>
+            <li>Structures et dynamiques des populations</li>
+            <li>Les relations intraspécifiques : diversité, modalités, conséquences</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-J-2 Les écosystèmes : structure, fonctionnement et dynamique</summary>
+          <div class="details-content"><ul>
+            <li>La biocénose</li>
+            <li>Les relations trophiques au sein d'un écosystème</li>
+            <li>Les relations interspécifiques au sein d'un écosystème</li>
+            <li>Les symbioses</li>
+            <li>Parasitisme et prédation</li>
+            <li>Parasitisme et symbiose</li>
+            <li>Compétition inter et intraspécifique</li>
+            <li>Compétition et coopération dans un écosystème</li>
+            <li>Impact des activités humaines dans la biodiversité</li>
+            <li>Les flux de matière au sein d'un écosystème</li>
+            <li>Les flux d'énergie au sein d'un écosystème</li>
+            <li>La production primaire au sein des écosystèmes</li>
+            <li>La production primaire et son devenir</li>
+            <li>Le recyclage de la matière organique dans la biosphère</li>
+            <li>Consommateurs et décomposeurs dans les écosystèmes</li>
+            <li>La prairie pâturée, un exemple d'agroécosystème</li>
+            <li>Comparaison agrosystème – écosystème naturel</li>
+            <li>Les écosystèmes et leur dynamique</li>
+            <li>Structure et dynamique des écosystèmes</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- SV-K -->
+    <div class="thematique-card">
+      <div class="thematique-header">SV-K — Évolution et phylogénie</div>
+      <div class="thematique-body">
+        <details><summary>SV-K-1 Les mécanismes de l'évolution</summary>
+          <div class="details-content"><ul>
+            <li>Les mécanismes de l'évolution</li>
+            <li>La sélection naturelle</li>
+            <li>Le rôle de la sélection dans l'évolution</li>
+            <li>Dérive et sélection</li>
+            <li>La spéciation</li>
+            <li>Les espèces</li>
+            <li>Adaptation et évolution</li>
+            <li>Convergence et évolution</li>
+            <li>Interactions biotiques et évolution</li>
+            <li>Reproduction et évolution</li>
+            <li>Modalités de la reproduction et conséquences sur les populations</li>
+            <li>Autogamie, allogamie</li>
+            <li>Origine et devenir du polymorphisme génétique</li>
+          </ul></div>
+        </details>
+        <details><summary>SV-K-2 Une approche phylogénétique de la biodiversité</summary>
+          <div class="details-content"><ul>
+            <li>Comment peut-on classer le vivant ?</li>
+            <li>Les convergences évolutives</li>
+            <li>Les végétaux dans la classification phylogénétique</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- BG -->
+    <div class="thematique-card">
+      <div class="thematique-header">BG — Biogéosciences</div>
+      <div class="thematique-body">
+        <details><summary>BG-A – Flux et cycles biogéochimiques : exemple du carbone</summary>
+          <div class="details-content"><ul>
+            <li>Les organismes dans le cycle du carbone</li>
+            <li>La régénération du CO2 dans le cycle du carbone</li>
+            <li>L'autotrophie : ses fondements cellulaires et sa place dans le cycle du carbone</li>
+            <li>Fonctionnement du végétal et cycle du carbone</li>
+            <li>Comparaison cycle du carbone – cycle de l'azote</li>
+            <li>Impacts des activités humaines sur les cycles biogéochimiques</li>
+            <li>L'importance des unicellulaires dans le cycle biogéochimique de l'azote</li>
+            <li>Le couple océan-atmosphère dans le cycle du carbone</li>
+            <li>Les êtres vivants dans les cycles biogéochimiques</li>
+          </ul></div>
+        </details>
+        <details><summary>BG-B - Les Sols</summary>
+          <div class="details-content"><ul>
+            <li>Le sol : formation et évolution</li>
+            <li>Les êtres vivants du sol</li>
+            <li>Structure et dynamique d'un sol</li>
+            <li>Importance biologique des micro-organismes dans l'écosystème prairie</li>
+          </ul></div>
+        </details>
+        <details><summary>BG-C - Le climat</summary>
+          <div class="details-content"><ul>
+            <li>La vie dans l'océan</li>
+            <li>Importance du couple océan – atmosphère</li>
+            <li>Importance du couple océan – atmosphère dans les climats passés, présent et futur</li>
+            <li>La diversité des archives paléoclimatiques et leurs utilisations</li>
+            <li>Variabilités climatiques</li>
+            <li>Les variations du climat, origine et conséquences</li>
+            <li>Les impacts du changement climatique sur la biodiversité</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+  </div><!-- /thematiques-grid -->
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PARTIE 2 : SUJETS DE SYNTHÈSE ÉCRIT
+═══════════════════════════════════════════ -->
+<div class="section-block" id="ecrit">
+  <h2 class="section-title">Sujets de synthèse écrit</h2>
+  <p class="section-intro">
+    Sujets de synthèse donnés lors d'épreuves écrites de concours. Se déroulent sur un temps long (plusieurs heures) ; les arguments doivent être développés en conséquence. Les anciens sujets font référence à un programme différent, mais dont le contenu est en général proche. Les sujets d'agrégation sont donnés à titre indicatif.<br>
+    Les rapports de jurys (accessibles en cliquant sur l'année du sujet) donnent des éléments de réponses.<br>
+    Si vous disposez d'archives manquant sur ce site, vous pouvez les transmettre à l'<a href="mailto:contact@astrantia.net">auteur du site</a>.
+  </p>
+
+  <div class="concours-grid">
+
+    <!-- Agro-Véto -->
+    <div class="concours-card">
+      <div class="concours-card-header">Agro-Véto (concours A)</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets Agro-Véto</summary>
+          <div class="details-content"><ul>
+            <li>Membrane plasmique et spécialisation des cellules chez les êtres vivants pluricellulaires (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2024.pdf">2024</a>)</li>
+            <li>Les divisions cellulaires (étude restreinte aux eucaryotes) (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2023.pdf">2023</a>)</li>
+            <li>Le sang (restreint aux Mammifères) (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2022.pdf">2022</a>)</li>
+            <li>Le dioxyde de carbone et les êtres vivants (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2021.pdf">2021</a>)</li>
+            <li>L'importance biologique des micro-organismes, à toutes les échelles du monde vivant (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2020.pdf">2020</a>)</li>
+            <li>La diversité des protéomes : origines et conséquences (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2019.pdf">2019</a>)</li>
+            <li>Les adaptations au milieu aérien chez les organismes pluricellulaires (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2018.pdf">2018</a>)</li>
+            <li>La communication intercellulaire chez les animaux (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2017.pdf">2017</a>)</li>
+            <li>La diversité allélique (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2016.pdf">2016</a>)</li>
+            <li>Transferts et utilisation du dioxygène (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2015.pdf">2015</a>)</li>
+            <li>Glucides et vie des Angiospermes (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2014.pdf">2014</a>)</li>
+            <li>Intégration des cellules au sein d'un organisme et protéines de la membrane plasmique (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2013.pdf">2013</a>)</li>
+            <li>Multiplication et diversification des êtres vivants pluricellulaires au cours des phénomènes de reproduction (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2012.pdf">2012</a>)</li>
+            <li>Lumière et Angiospermes (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2011.pdf">2011</a>)</li>
+            <li>Cellules musculaires striées et neurones (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2010.pdf">2010</a>)</li>
+            <li>L'importance biologique des molécules lipidiques (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2009.pdf">2009</a>)</li>
+            <li>L'appareil racinaire des Angiospermes (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2008.pdf">2008</a>)</li>
+            <li>L'information génétique portée par un chromosome eucaryote (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2007.pdf">2007</a>)</li>
+            <li>L'approvisionnement en dioxygène des cellules à partir de l'atmosphère (Mammifères) (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2006.pdf">2006</a>)</li>
+            <li>Un arbre est un organisme autotrophe au carbone (nutrition carbonée) (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2005.pdf">2005</a>)</li>
+            <li>Les squelettes des animaux pluricellulaires (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2004.pdf">2004</a>)</li>
+            <li>L'ADN nucléaire : relations structure-fonction (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2002.pdf">2002</a>)</li>
+            <li>Reproduction sexuée et reproduction asexuée (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2001.pdf">2001</a>)</li>
+            <li>Les cellules eucaryotes dans les organismes pluricellulaires sont limitées par une membrane plasmique (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2000.pdf">2000</a>)</li>
+            <li>La fonction respiratoire (aspects anatomiques et physiologiques) (<a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-1995.pdf">1995</a>)</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ENS -->
+    <div class="concours-card">
+      <div class="concours-card-header ens">ENS</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets ENS</summary>
+          <div class="details-content"><ul>
+            <li>Coopération entre compartiments cellulaires, entre cellules et entre organes dans le métabolisme énergétique (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2023.pdf">2023</a>)</li>
+            <li>Les interactions entre cellules voisines (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2022.pdf">2022</a>)</li>
+            <li>La variabilité génétique dans la population humaine (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2021.pdf">2021</a>)</li>
+            <li>Les divisions cellulaires (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2020.pdf">2020</a>)</li>
+            <li>Les échanges de matière entre l'animal et le milieu extérieur (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2019.pdf">2019</a>)</li>
+            <li>Le potentiel de membrane (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2018.pdf">2018</a>)</li>
+            <li>Aspects temporels du développement (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2017.pdf">2017</a>)</li>
+            <li>Importance écologique des relations interspécifiques (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2016.pdf">2016</a>)</li>
+            <li>Comment et dans quelle mesure le génotype permet la construction du phénotype (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2015.pdf">2015</a>)</li>
+            <li>La circulation chez les organismes pluricellulaires (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2014.pdf">2014</a>)</li>
+            <li>La fécondation (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2013.pdf">2013</a>)</li>
+            <li>Diversité structurale et convergence fonctionnelle des appareils respiratoires chez les Métazoaires (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2012.pdf">2012</a>)</li>
+            <li>Les messagers intercellulaires chez les animaux (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2011.pdf">2011</a>)</li>
+            <li>Les microorganismes : place dans le vivant et diversité des métabolismes trophiques (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2010.pdf">2010</a>)</li>
+            <li>Changements de taille et de forme des cellules des organismes pluricellulaires (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2009.pdf">2009</a>)</li>
+            <li>Organisation et contraction des cellules musculaires striées (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2008.pdf">2008</a>)</li>
+            <li>Les ARN (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2007.pdf">2007</a>)</li>
+            <li>La diversité et les rôles des hormones végétales (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2006.pdf">2006</a>)</li>
+            <li>Le cycle cellulaire chez les eucaryotes (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2005.pdf">2005</a>)</li>
+            <li>Axes de polarité et symétrie des organismes (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2004.pdf">2004</a>)</li>
+            <li>De la reconnaissance d'un signal extracellulaire à la réponse biologique de la cellule (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2003.pdf">2003</a>)</li>
+            <li>Virus et cycles de multiplication (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2003.pdf">2003</a>)</li>
+            <li>Relations entre le génotype et le phénotype chez les eucaryotes (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2002.pdf">2002</a>)</li>
+            <li>Les mitochondries (<a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2001.pdf">2001</a>)</li>
+            <li>L'énergie métabolique, ses transformations et sa mise en réserve au niveau cellulaire (1989)</li>
+            <li>L'importance des enzymes dans le métabolisme cellulaire (1989)</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Agrégation -->
+    <div class="concours-card">
+      <div class="concours-card-header agregation">Agrégation</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets Agrégation</summary>
+          <div class="details-content"><ul>
+            <li>Les microorganismes (virus inclus) et la santé des organismes pluricellulaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2023.pdf">2023</a>)</li>
+            <li>Sexualisation et sexualité (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2023.pdf">2023</a>)</li>
+            <li>Le sol, un système écologique dynamique et fragile (concours interne – <a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-interne-Rapport-2023.pdf">2023</a>)</li>
+            <li>Écosystèmes et relations interspécifiques (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2022.pdf">2022</a>)</li>
+            <li>La variabilité génétique au sein d'un individu eucaryote (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2022.pdf">2022</a>)</li>
+            <li>L'arbre dans l'écosystème forêt (concours interne – <a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-interne-Rapport-2021.pdf">2021</a>)</li>
+            <li>Les variations d'activité au sein d'une cellule (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2021.pdf">2021</a>)</li>
+            <li>La ressemblance entre êtres vivants (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2021.pdf">2021</a>)</li>
+            <li>Les Angiospermes et leurs consommateurs (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2020.pdf">2020</a>)</li>
+            <li>Prolifération et mort cellulaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2020.pdf">2020</a>)</li>
+            <li>L'eau et les molécules biologiques (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2019.pdf">2019</a>)</li>
+            <li>Squelette et protection de l'organisme (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2019.pdf">2019</a>)</li>
+            <li>Les plans d'organisation des organismes pluricellulaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2018.pdf">2018</a>)</li>
+            <li>Les réserves de la cellule (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2018.pdf">2018</a>)</li>
+            <li>La lignée verte : de l'organisme à l'écosystème (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2017.pdf">2017</a>)</li>
+            <li>Les nucléotides et leurs dérivés (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2017.pdf">2017</a>)</li>
+            <li>Les couleurs chez les Métazoaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2016.pdf">2016</a>)</li>
+            <li>La motricité somatique (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2016.pdf">2016</a>)</li>
+            <li>La mise en mouvement du milieu intérieur chez les Métazoaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2015.pdf">2015</a>)</li>
+            <li>Structure dynamique et propriétés fonctionnelles de la membrane des cellules (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2015.pdf">2015</a>)</li>
+            <li>La coévolution (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2014.pdf">2014</a>)</li>
+            <li>La différenciation cellulaire : des mécanismes moléculaires à l'organisation tissulaire (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2014.pdf">2014</a>)</li>
+            <li>La vie ralentie chez les êtres vivants pluricellulaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2013.pdf">2013</a>)</li>
+            <li>Le calcium et le fonctionnement des cellules eucaryotes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2013.pdf">2013</a>)</li>
+            <li>La lumière et les êtres vivants (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2012.pdf">2012</a>)</li>
+            <li>Les mouvements et déformations des cellules (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2012.pdf">2012</a>)</li>
+            <li>Les animaux et la température (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2011.pdf">2011</a>)</li>
+            <li>La communication chimique entre les cellules eucaryotes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2011.pdf">2011</a>)</li>
+            <li>La dispersion des organismes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2010.pdf">2010</a>)</li>
+            <li>Le génome des eucaryotes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2010.pdf">2010</a>)</li>
+            <li>La communication intraspécifique chez les animaux (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2009.pdf">2009</a>)</li>
+            <li>La compartimentation cellulaire (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2009.pdf">2009</a>)</li>
+            <li>Les réponses adaptatives aux conditions de la vie en milieu aérien chez les Métazoaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2008.pdf">2008</a>)</li>
+            <li>Nature et fonctions des interactions ADN-protéines (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2008.pdf">2008</a>)</li>
+            <li>L'évolution biologique : des faits aux théories (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2007.pdf">2007</a>)</li>
+            <li>Les acides ribonucléiques des eucaryotes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2007.pdf">2007</a>)</li>
+            <li>Le port des embryophytes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2006.pdf">2006</a>)</li>
+            <li>La perméabilité de la membrane plasmique chez les cellules eucaryotes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2006.pdf">2006</a>)</li>
+            <li>Reproduction sexuée et pérennité des espèces (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2005.pdf">2005</a>)</li>
+            <li>Les muscles striés (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2005.pdf">2005</a>)</li>
+            <li>L'équilibre hydrique chez les animaux (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2004.pdf">2004</a>)</li>
+            <li>Les matrices extracellulaires (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2004.pdf">2004</a>)</li>
+            <li>Cellule et oxygène (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2004.pdf">2004</a>)</li>
+            <li>Les mutations : diversité, conséquences et applications (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2003.pdf">2003</a>)</li>
+            <li>L'expression génétique et son contrôle chez les eucaryotes (<a href="https://archive.org/download/Rapports-Agregation-SVT/Agregation-Rapport-2003.pdf">2003</a>)</li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+  </div><!-- /concours-grid -->
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PARTIE 3 : SUJETS D'ANALYSE DE DOCUMENTS
+═══════════════════════════════════════════ -->
+<div class="section-block" id="documents">
+  <h2 class="section-title">Sujets d'analyse de documents</h2>
+  <p class="section-intro">
+    Sujets sur documents donnés lors d'épreuves écrites de concours BCPST. Les anciens sujets font référence à un programme différent, mais dont le contenu est en général proche.
+    Les rapports donnent des éléments de réponses. Si vous disposez d'archives manquant sur ce site, vous pouvez les transmettre à l'<a href="mailto:contact@astrantia.net">auteur du site</a>.
+  </p>
+
+  <h3 class="sous-section-title">Sciences de la vie (biologie)</h3>
+  <div class="concours-grid">
+
+    <!-- Agro-Véto bio docs -->
+    <div class="concours-card">
+      <div class="concours-card-header">Agro-Véto (concours A)</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets Agro-Véto – biologie</summary>
+          <div class="details-content"><ul>
+            <li>Le Covid-19 à différentes échelles (2024) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2024.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2024.pdf">Rapport</a></li>
+            <li>Les végétaux pyrophytes (2023) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2023.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2023.pdf">Rapport</a></li>
+            <li>Quelques aspects de la biosynthèse de la cellulose (2022) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2022.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2022.pdf">Rapport</a></li>
+            <li>Les flux d'azote « occulte » dans les écosystèmes forestiers (2021) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2021.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2021.pdf">Rapport</a></li>
+            <li>La tétrodotoxine (2020) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2020.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2020.pdf">Rapport</a></li>
+            <li>Biodiversité et fonctionnement des écosystèmes (2019) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2019.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2019.pdf">Rapport</a></li>
+            <li>Big sperm paradox (2018) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2018.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2018.pdf">Rapport</a></li>
+            <li>Interactions hôte-microbiote (2017) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2017.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2017.pdf">Rapport</a></li>
+            <li>La couleur des fleurs (2016) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2016.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2016.pdf">Rapport</a></li>
+            <li>Protéine Rac1 et cancer (2015) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2015.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2015.pdf">Rapport</a></li>
+            <li>Les tissus minéralisés (2014) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2014.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2014.pdf">Rapport</a></li>
+            <li>Constitution et utilisation des réserves lipidiques chez les Mammifères (2013) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2013a.pdf">Sujet</a></li>
+            <li>La résistance d'un végétal aux inondations : l'exemple du riz (2013) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2013b.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2013.pdf">Rapport</a></li>
+            <li>Les hémoglobines (2012) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2012.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2012.pdf">Rapport</a></li>
+            <li>La nutrition des Coraux (2011) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2011.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2011.pdf">Rapport</a></li>
+            <li>La motilité du spermatozoïde (2010) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2010.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2010.pdf">Rapport</a></li>
+            <li>Les chloroplastes (2009) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2009.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2009.pdf">Rapport</a></li>
+            <li>Développement du cœur et son adaptation aux besoins de l'organisme (2008) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2008.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2008.pdf">Rapport</a></li>
+            <li>Vie d'une feuille d'Angiosperme (2007) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2007.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2007.pdf">Rapport</a></li>
+            <li>Différenciation des cellules musculaires (2006) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2006.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2006.pdf">Rapport</a></li>
+            <li>Jonctions Gap (2005) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2005.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2005.pdf">Rapport</a></li>
+            <li>L'interaction entre Fabacées et bactéries du genre Rhizobium (2004) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-bio-2004.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-Rapport-2004.pdf">Rapport</a></li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- G2E bio docs -->
+    <div class="concours-card">
+      <div class="concours-card-header g2e">G2E</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets G2E – biologie</summary>
+          <div class="details-content"><ul>
+            <li>La ripisylve (aulne) // Orb2, une protéine amyloïde (2024) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2024.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2024.pdf">Rapport</a></li>
+            <li>Les inhibiteurs de la succinate déshydrogénase // Autour du bois mort (2023) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2023.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2023.pdf">Rapport</a></li>
+            <li>Les diatomées // Le récepteur CB2R aux endocannabinoïdes (2022) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2022.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2022.pdf">Rapport</a></li>
+            <li>Dysfonctionnement des mitochondries et Parkinson // Cyanobactéries marines Prochlorococcus (2021) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2021.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2021.pdf">Rapport</a></li>
+            <li>Morphogenèse et croissance d'Angiospermes // Croissance du tube pollinique (2020) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2020.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2020.pdf">Rapport</a></li>
+            <li>Étude de la protéine ZP3 // Fonctionnement du cœur de Mammifère (2019) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2019.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2019.pdf">Rapport</a></li>
+            <li>Le phosphate et les végétaux // Étude du récepteur au froid TRPA1 (2018) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2018.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2018.pdf">Rapport</a></li>
+            <li>Les espèces invasives de fourmis // Les gibbérellines chez les végétaux (2017) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2017.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2017.pdf">Rapport</a></li>
+            <li>La division cellulaire // Stratégies du champignon Botrytis cinerea (2016) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2016.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2016.pdf">Rapport</a></li>
+            <li>Fonctionnement des artères // Diversité des transcriptomes et lactation (2015) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2015.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2015.pdf">Rapport</a></li>
+            <li>Fonctionnement des muscles striés squelettiques // Le protéasome lors de la fécondation (2014) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2014.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2014.pdf">Rapport</a></li>
+            <li>Métabolisme et écologie des bactéries photosynthétiques // Origine et conséquences des mutations (2013) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2013.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2013.pdf">Rapport</a></li>
+            <li>Développement des Angiospermes // Les prions (2012) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2012.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2012.pdf">Rapport</a></li>
+            <li>Respiration mitochondriale et thermogenèse (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2011-mitoch.pdf">sujet</a>) // Structure et fonction des cellules musculaires (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2011-muscles.pdf">sujet</a>) (2011) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2011.pdf">Rapport</a></li>
+            <li>Organisation et fonctionnement du cœur (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2010-coeur.pdf">sujet</a>) // Biologie et métabolisme des levures (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2010-levures.pdf">sujet</a>) (2010) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2010.pdf">Rapport</a></li>
+            <li>Développement précoce des Angiospermes (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2009-angios.pdf">sujet</a>) // Membrane plasmique et jonctions serrées (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2009-membranes.pdf">sujet</a>) (2009) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2009.pdf">Rapport</a></li>
+            <li>Transmission de l'information (de l'organisme à la cellule) (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2008-nerfs.pdf">sujet</a>) // Saison hivernale chez les Angiospermes (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2008-froid.pdf">sujet</a>) (2008) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2008.pdf">Rapport</a></li>
+            <li>La cellule acineuse pancréatique (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2007-acineuse.pdf">sujet</a>) // Organisation et biogenèse de la paroi des végétaux (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2007-auxine.pdf">sujet</a>) (2007) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2007.pdf">Rapport</a></li>
+            <li>Structure protéique (hexokinase) (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2006-proteines.pdf">sujet</a>) // Les surfaces d'échanges à toutes les échelles (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2006-surfaces.pdf">sujet</a>) (2006) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2006.pdf">Rapport</a></li>
+            <li>Biologie florale des Angiospermes (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2005-fleurs.pdf">sujet</a>) // La méiose (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2005-meiose.pdf">sujet</a>) (2005) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2005.pdf">Rapport</a></li>
+            <li>Cycles de développement chez les plantes (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2004-cycles.pdf">sujet</a>) // Les vitamines (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2004-vitamines.pdf">sujet</a>) (2004) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2004.pdf">Rapport</a></li>
+            <li>Structure et fonctionnement de la cellule musculaire (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2003-muscles.pdf">sujet</a>) // Reconnaissances chez les unicellulaires (<a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2003-recepteurs.pdf">sujet</a>) (2003) – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2003.pdf">Rapport</a></li>
+            <li>La respiration dans le règne animal (2002) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-2002.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2002.pdf">Rapport</a></li>
+            <li>Circulation sanguine des Mammifères // Fonctionnement de la panse des Ruminants (1999) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-bio-1999.pdf">Sujet</a></li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ENS bio docs -->
+    <div class="concours-card">
+      <div class="concours-card-header ens">ENS</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets ENS – biologie</summary>
+          <div class="details-content"><ul>
+            <li>Le métabolisme énergétique (cellules cancéreuses ; coopération métabolique au sein du cerveau) (2023) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2023.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2023.pdf">Rapport</a></li>
+            <li>Les interactions entre cellules voisines (2022) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2022.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2022.pdf">Rapport</a></li>
+            <li>Le génome humain (2021) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2021.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2021.pdf">Rapport</a></li>
+            <li>Les divisions cellulaires (2020) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2020.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2020.pdf">Rapport</a></li>
+            <li>Les flux de matière dans le vivant (cycle du carbone, écosystème après retrait d'un glacier) (2019) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2019.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2019.pdf">Rapport</a></li>
+            <li>L'optogénétique (les opsines) (2018) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2018.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2018.pdf">Rapport</a></li>
+            <li>Le temps en biologie (horloge biologique, rythmes endocrines) (2017) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2017.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2017.pdf">Rapport</a></li>
+            <li>Les relations interspécifiques (CRISPR/Cas) (2016) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2016.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2016.pdf">Rapport</a></li>
+            <li>Phénotypes et génotypes (manger sans grossir ; manger des algues) (2015) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2015.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2015.pdf">Rapport</a></li>
+            <li>Hypertension artérielle (médicaments anti-hypertenseurs ; angiotensine) (2014) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2014.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2014.pdf">Rapport</a></li>
+            <li>La fécondation (coquelicot et souris) (2013) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2013.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2013.pdf">Rapport</a></li>
+            <li>Causes génétiques de la rétinite pigmentaire (2012) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2012.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2012.pdf">Rapport</a></li>
+            <li>Tumeur cérébrale et messager intercellulaire (2011) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2011.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2011.pdf">Rapport</a></li>
+            <li>Les microorganismes (Plasmodium ; génome du virus de l'hépatite D) (2010) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2010.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2010.pdf">Rapport</a></li>
+            <li>La régénération chez les animaux ; croissance du tube pollinique des Angiospermes (2009) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2009.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2009.pdf">Rapport</a></li>
+            <li>Filaments intermédiaires ; globules rouges ; étude d'une protéine (2008) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2008.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2008.pdf">Rapport</a></li>
+            <li>L'interférence ARN ; contrôle de la qualité des ARN chez les Vertébrés (2007) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2007.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2007.pdf">Rapport</a></li>
+            <li>Le monoxyde d'azote (hypoxie et stress hydrique) (2006) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2006.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2006.pdf">Rapport</a></li>
+            <li>Réplication chez la levure ; lésions de l'ADN par les UV (2005) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2005.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2005.pdf">Rapport</a></li>
+            <li>Génétique du développement (Arabidopsis et Drosophile) (2004) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2004.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2004.pdf">Rapport</a></li>
+            <li>Caractérisation d'un facteur de croissance ; Actions de molécules antirétrovirales (2003) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2003.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2003.pdf">Rapport</a></li>
+            <li>Séquençage du génome humain ; Expression génétique chez Arabidopsis (2002) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2002.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2002.pdf">Rapport</a></li>
+            <li>Étude de maladies génétiques mitochondriales (2001) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-bio-2001.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-bio-2001.pdf">Rapport</a></li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+  </div><!-- /concours-grid bio -->
+
+  <h3 class="sous-section-title">Sciences de la Terre (géologie)</h3>
+  <div class="concours-grid">
+
+    <!-- Agro-Véto géol docs -->
+    <div class="concours-card">
+      <div class="concours-card-header">Agro-Véto (concours A)</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets Agro-Véto – géologie</summary>
+          <div class="details-content"><ul>
+            <li>Quelques aspects de la géologie des Pyrénées (2024) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2024.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2024.pdf">Rapport</a></li>
+            <li>Quelques aspects des mouvements horizontaux et verticaux en Iran (2023) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2023.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2023.pdf">Rapport</a></li>
+            <li>Quelques aspects des processus tsunamigènes et risque Tsunami (2022) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2022.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2022.pdf">Rapport</a></li>
+            <li>Quelques aspects de la formation et de la dynamique d'un Océan (2021) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2021.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2021.pdf">Rapport</a></li>
+            <li>Étude de structures géologiques à différentes échelles (2020) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2020.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2020.pdf">Rapport</a></li>
+            <li>La croûte continentale des massifs anciens et récents (2019) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2019.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2019.pdf">Rapport</a></li>
+            <li>Géologie de l'océan Atlantique (2018) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2018.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2018.pdf">Rapport</a></li>
+            <li>Géologie de la Provence (2017) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2017.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2017.pdf">Rapport</a></li>
+            <li>Convergence Inde-Eurasie (2016) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2016.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2016.pdf">Rapport</a></li>
+            <li>La Limagne de Clermont-Ferrand (2015) – <a href="https://archive.org/download/Sujets-Concours-Agro-Veto-BCPST/Agro-docs-geol-2015.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-Agro-Veto-BCPST/Agro-docs-Rapport-2015.pdf">Rapport</a></li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- G2E géol docs -->
+    <div class="concours-card">
+      <div class="concours-card-header g2e">G2E</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets G2E – géologie</summary>
+          <div class="details-content"><ul>
+            <li>Les ophiolites (2024) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2024.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2024.pdf">Rapport</a></li>
+            <li>Le fossé Rhénan : de la géologie à la géothermie (2023) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2023.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2023.pdf">Rapport</a></li>
+            <li>Parcours géologique dans le Massif Central français (2022) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2022.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2022.pdf">Rapport</a></li>
+            <li>Le cycle du potassium : du granite au sel (2021) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2021.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2021.pdf">Rapport</a></li>
+            <li>Accrétion océanique (2020) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2020.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2020.pdf">Rapport</a></li>
+            <li>Magmatisme basique et minéralisations associées : le cas du Complexe du Bushveld (2019) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2019.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2019.pdf">Rapport</a></li>
+            <li>Géologie des Cordillères Bétiques et du bassin d'Alboran (2018) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2018.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2018.pdf">Rapport</a></li>
+            <li>Les Argiles : de leurs origines aux intérêts économiques (2017) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2017.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2017.pdf">Rapport</a></li>
+            <li>Terre primitive et dynamique archéenne (2016) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2016.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2016.pdf">Rapport</a></li>
+            <li>La Cordillère des Andes (2015) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2015.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2015.pdf">Rapport</a></li>
+            <li>Tour géologique du Nord de la France (2014) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2014.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2014.pdf">Rapport</a></li>
+            <li>Exploration pétrolière en zone subarctique (2013) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2013.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2013.pdf">Rapport</a></li>
+            <li>Sédimentologie (méandres – grès à roseaux) (2012) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2012.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2012.pdf">Rapport</a></li>
+            <li>Le sultanat d'Oman : un laboratoire naturel (2011) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2011.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2011.pdf">Rapport</a></li>
+            <li>Reconstitution de l'histoire géologique d'une région (2010) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2010.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2010.pdf">Rapport</a></li>
+            <li>Évolution d'une marge stable : la marge guyanaise (2009) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2009.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-geol-2009.pdf">Rapport</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-corrige-geol-2009.pdf">Corrigé</a></li>
+            <li>Grésification des sables de Fontainebleau + cartographie (2008) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2008.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-geol-2008.pdf">Rapport</a></li>
+            <li>Les Pyrénées orientales : orogenèse et géochronologie (2007) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2007.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2007.pdf">Rapport</a></li>
+            <li>Sédimentologie (plateforme carbonatée, stylolithisation) (2006) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2006.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2006.pdf">Rapport</a></li>
+            <li>Rhéologie (écoulements) et glaciers (2005) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2005.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2005.pdf">Rapport</a></li>
+            <li>Les textures des roches : origine et intérêt (2004) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2004.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2004.pdf">Rapport</a></li>
+            <li>Étude de la dynamique d'une portion de côte basse : l'embouchure du Manambolo (Madagascar) (2003) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2003.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-geol-2003.pdf">Rapport</a></li>
+            <li>Bassins sédimentaires et orogènes dans le cadre de la tectonique des plaques (2002) – <a href="https://archive.org/download/Sujets-Concours-G2E-BCPST/G2E-docs-geol-2002.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-G2E-BCPST/G2E-Rapport-2002.pdf">Rapport</a></li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ENS géol docs -->
+    <div class="concours-card">
+      <div class="concours-card-header ens">ENS</div>
+      <div class="concours-card-body">
+        <details><summary>Voir tous les sujets ENS – géologie</summary>
+          <div class="details-content"><ul>
+            <li>Sismicité martienne / Aux limites de plaques / Ça pousse et ça casse / Eau et magmatisme (2023) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2023.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2023.pdf">Rapport</a></li>
+            <li>Quand le climat influence la Terre solide (2022) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2022.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2022.pdf">Rapport</a></li>
+            <li>La lithosphère (2021) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2021.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2021.pdf">Rapport</a></li>
+            <li>Objectif Lune (2020) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2020.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2020.pdf">Rapport</a></li>
+            <li>Fer, île volcanique, subduction, isotopes et fractionnement (2019) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2019.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2019.pdf">Rapport</a></li>
+            <li>Terre vs Mars (2018) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2018.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2018.pdf">Rapport</a></li>
+            <li>Énergie solaire, saisons, températures, eau liquide, eau et fusion de la croûte (2017) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2017.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2017.pdf">Rapport</a></li>
+            <li>Dynamique du carbone dans les sols, les séismes de Sumatra (2016) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2016.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2016.pdf">Rapport</a></li>
+            <li>Escales dans l'Atlantique Nord (2015) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2015.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2015.pdf">Rapport</a></li>
+            <li>Le manteau terrestre (2014) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2014.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2014.pdf">Rapport</a></li>
+            <li>Du lac Baïkal à la Sibérie russe (2013) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2013.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2013.pdf">Rapport</a></li>
+            <li>Les océans (2012) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2012.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2012.pdf">Rapport</a></li>
+            <li>La Lune (2011) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2011.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2011.pdf">Rapport</a></li>
+            <li>Structure et composition de la Terre profonde // Dynamique et évolution de la lithosphère // cycle du carbone (2010) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2010.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2010.pdf">Rapport</a></li>
+            <li>Archives marines du climat de la Terre (coraux ; bioturbations ; peuplements humains) (2009) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2009.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2009.pdf">Rapport</a></li>
+            <li>La dynamique de la lithosphère et les risques associés (2008) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2008.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2008.pdf">Rapport</a></li>
+            <li>Les variations du niveau marin (2007) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2007.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2007.pdf">Rapport</a></li>
+            <li>La séquestration du CO2 atmosphérique (2006) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2006.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2006.pdf">Rapport</a></li>
+            <li>La planète Mars (caractéristiques ; dynamique interne ; eau) (2005) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2005.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2005.pdf">Rapport</a></li>
+            <li>Flux de chaleur ; Lithosphère océanique ; Hydrothermalisme océanique ; Cycle du carbone (2004) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2004.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2004.pdf">Rapport</a></li>
+            <li>Localisation d'un épicentre de séisme ; Recyclage des éléments volatils en subduction (2003) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2003.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2003.pdf">Rapport</a></li>
+            <li>Vernis tardif (noyau) ; Altération des roches et CO2 atmosphérique ; Refroidissement de la Terre interne (2002) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2002.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2002.pdf">Rapport</a></li>
+            <li>Le carbone mantellique et le carbone océanique (2001) – <a href="https://archive.org/download/Sujets-Concours-ENS-BCPST/ENS-docs-geol-2001.pdf">Sujet</a> – <a href="https://archive.org/download/Rapports-Concours-ENS-BCPST/ENS-Rapport-geol-2001.pdf">Rapport</a></li>
+          </ul></div>
+        </details>
+      </div>
+    </div>
+
+  </div><!-- /concours-grid géol -->
+</div>
+
+</main>
+
+<footer>
+  <p>
+    <a href="https://astrantia.net/">ASTRANTIA.NET – les SVT en prépa</a> ·
+    <a href="https://astrantia.net/a-propos-de-ce-site/">À propos</a> ·
+    <a href="mailto:contact@astrantia.net">Contact</a>
+  </p>
+  <p style="margin-top:0.4rem; opacity:0.6; font-size:0.78rem;">
+    Pour contribuer à cette page (sujets manquants), écrivez à <a href="mailto:contact@astrantia.net">contact@astrantia.net</a>
+  </p>
+</footer>
+
+</body>
+</html>
