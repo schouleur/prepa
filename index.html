@@ -1,1 +1,308 @@
-<a href="entrainements.html">Entraînements</a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASTRANTIA.NET – les SVT en prépa</title>
+<style>
+  :root {
+    --bleu-fonce: #2f4858;
+    --bleu-moyen: #33658a;
+    --bleu-clair: #86bbd8;
+    --or: #f6ae2d;
+    --texte: #333;
+    --fond: #f5f5f5;
+    --blanc: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--fond);
+    color: var(--texte);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--bleu-fonce);
+    padding: 18px 0 0 0;
+  }
+  .header-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 18px 24px;
+  }
+  .site-title-block h1 {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    color: var(--blanc);
+    font-weight: bold;
+    letter-spacing: .03em;
+  }
+  .site-title-block p {
+    color: var(--bleu-clair);
+    font-size: .9rem;
+    margin-top: 4px;
+  }
+
+  nav {
+    background: var(--bleu-moyen);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  nav ul li a {
+    display: block;
+    color: var(--blanc);
+    text-decoration: none;
+    padding: 12px 18px;
+    font-family: 'Georgia', serif;
+    font-size: .95rem;
+    transition: color .2s;
+  }
+  nav ul li a:hover,
+  nav ul li.active a { color: var(--or); }
+
+  /* ── CONTENU ── */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--blanc);
+    border-left: 5px solid var(--or);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  }
+  .hero h2 {
+    font-family: 'Georgia', serif;
+    font-size: 1.6rem;
+    color: var(--bleu-fonce);
+    margin-bottom: 10px;
+  }
+  .hero p {
+    color: #555;
+    font-size: 1rem;
+    max-width: 700px;
+  }
+
+  /* ── GRILLE DE CARTES ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: var(--blanc);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .card:hover {
+    box-shadow: 0 6px 20px rgba(47,72,88,.15);
+    transform: translateY(-3px);
+  }
+
+  .card-header {
+    background: var(--bleu-fonce);
+    padding: 18px 20px 14px;
+  }
+  .card-header h3 {
+    font-family: 'Georgia', serif;
+    font-size: 1.05rem;
+    color: var(--blanc);
+    line-height: 1.4;
+  }
+  .card-header .tag {
+    display: inline-block;
+    background: var(--or);
+    color: var(--bleu-fonce);
+    font-size: .72rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .card-body {
+    padding: 16px 20px;
+    flex: 1;
+    color: #555;
+    font-size: .9rem;
+  }
+
+  .card-footer {
+    padding: 12px 20px 16px;
+  }
+  .card-footer a {
+    display: inline-block;
+    background: var(--bleu-moyen);
+    color: var(--blanc);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: .88rem;
+    transition: background .2s;
+  }
+  .card-footer a:hover {
+    background: var(--or);
+    color: var(--bleu-fonce);
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
+    color: var(--bleu-fonce);
+    margin: 0 0 20px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--or);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bleu-fonce);
+    color: var(--bleu-clair);
+    text-align: center;
+    padding: 22px 24px;
+    font-size: .88rem;
+    margin-top: 40px;
+  }
+  footer a { color: var(--bleu-clair); text-decoration: none; }
+  footer a:hover { color: var(--or); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 20px; }
+    nav ul li a { padding: 10px 12px; font-size: .85rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-top">
+    <div class="site-title-block">
+      <h1>ASTRANTIA.NET – les SVT en prépa</h1>
+      <p>Ressources en SVT, biologie, géologie, pour les étudiants de classes préparatoires ATS, BCPST et TB</p>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li class="active"><a href="index.html">Accueil</a></li>
+      <li><a href="entrainements.html">Entraînements</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <div class="hero">
+    <h2>Bienvenue sur ASTRANTIA.NET</h2>
+    <p>Ce site propose des ressources pédagogiques en sciences de la vie et de la Terre pour les étudiants de classes préparatoires BCPST, ATS et TB : articles de fond, méthodes de travail, et une large base d'annales de concours.</p>
+  </div>
+
+  <!-- Entraînements -->
+  <p class="section-title">Entraînements</p>
+  <div class="cards" style="margin-bottom: 40px;">
+
+    <div class="card">
+      <div class="card-header">
+        <span class="tag">Concours</span>
+        <h3>Annales – Sujets et rapports de jury</h3>
+      </div>
+      <div class="card-body">
+        Sujets de synthèse oral, sujets de synthèse écrit et sujets d'analyse de documents des concours Agro-Véto, ENS et G2E, avec les rapports de jury associés.
+      </div>
+      <div class="card-footer">
+        <a href="entrainements.html">Accéder aux annales →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Articles — à compléter -->
+  <p class="section-title">Articles</p>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-header">
+        <span class="tag">Sciences</span>
+        <h3>La peau : un super-organe qui nous protège</h3>
+      </div>
+      <div class="card-body">
+        Structure, fonctions et propriétés remarquables de la peau, organe le plus étendu du corps humain.
+      </div>
+      <div class="card-footer">
+        <a href="articles/la-peau.html">Lire l'article →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="tag">Sciences</span>
+        <h3>Les fermentations, c'est la vie !</h3>
+      </div>
+      <div class="card-body">
+        Du levain au yaourt : les fermentations, omniprésentes dans le vivant, illustrent à merveille le métabolisme anaérobie.
+      </div>
+      <div class="card-footer">
+        <a href="articles/fermentations.html">Lire l'article →</a>
+      </div>
+    </div>
+
+    <!-- Ajoutez ici d'autres cartes pour vos futurs articles :
+
+    <div class="card">
+      <div class="card-header">
+        <span class="tag">Sciences</span>
+        <h3>Titre de l'article</h3>
+      </div>
+      <div class="card-body">
+        Bref résumé de l'article en une ou deux phrases.
+      </div>
+      <div class="card-footer">
+        <a href="articles/nom-du-fichier.html">Lire l'article →</a>
+      </div>
+    </div>
+
+    -->
+
+  </div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>
+    <a href="#">À propos de ce site</a> &nbsp;|&nbsp;
+    <a href="#">Mentions légales</a> &nbsp;|&nbsp;
+    <a href="mailto:contact@astrantia.net">Contacter l'auteur</a>
+  </p>
+  <p style="margin-top:8px; color:#86bbd8; font-size:.82rem;">Copyright © 2026 ASTRANTIA.NET – les SVT en prépa</p>
+</footer>
+
+</body>
+</html>
