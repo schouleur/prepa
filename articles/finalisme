@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="fr-FR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Pour et pourquoi, deux mots interdits en biologie &#8211; ASTRANTIA.NET &#8211; les SVT en prépa</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="ASTRANTIA.NET - les SVT en prépa &raquo; Flux" href="https://astrantia.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="ASTRANTIA.NET - les SVT en prépa &raquo; Flux des commentaires" href="https://astrantia.net/comments/feed/" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/astrantia.net\/wp\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.5"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://astrantia.net/wp/wp-includes/css/dist/block-library/style.min.css?ver=6.7.5' type='text/css' media='all' />
+<style id='wp-block-library-theme-inline-css' type='text/css'>
+.wp-block-audio :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio :where(figcaption){color:#ffffffa6}.wp-block-audio{margin:0 0 1em}.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}.wp-block-embed :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed :where(figcaption){color:#ffffffa6}.wp-block-embed{margin:0 0 1em}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:#ffffffa6}:root :where(.wp-block-image figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme :root :where(.wp-block-image figcaption){color:#ffffffa6}.wp-block-image{margin:0 0 1em}.wp-block-pullquote{border-bottom:4px solid;border-top:4px solid;color:currentColor;margin-bottom:1.75em}.wp-block-pullquote cite,.wp-block-pullquote footer,.wp-block-pullquote__citation{color:currentColor;font-size:.8125em;font-style:normal;text-transform:uppercase}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;font-style:normal;position:relative}.wp-block-quote:where(.has-text-align-right){border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote:where(.has-text-align-center){border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote:where(.is-style-plain){border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-search__button{border:1px solid #ccc;padding:.375em .625em}:where(.wp-block-group.has-background){padding:1.25em 2.375em}.wp-block-separator.has-css-opacity{opacity:.4}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto}.wp-block-separator.has-alpha-channel-opacity{opacity:1}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table{margin:0 0 1em}.wp-block-table td,.wp-block-table th{word-break:normal}.wp-block-table :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table :where(figcaption){color:#ffffffa6}.wp-block-video :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video :where(figcaption){color:#ffffffa6}.wp-block-video{margin:0 0 1em}:root :where(.wp-block-template-part.has-background){margin-bottom:0;margin-top:0;padding:1.25em 2.375em}
+</style>
+<style id='filebird-block-filebird-gallery-style-inline-css' type='text/css'>
+ul.filebird-block-filebird-gallery{margin:auto!important;padding:0!important;width:100%}ul.filebird-block-filebird-gallery.layout-grid{display:grid;grid-gap:20px;align-items:stretch;grid-template-columns:repeat(var(--columns),1fr);justify-items:stretch}ul.filebird-block-filebird-gallery.layout-grid li img{border:1px solid #ccc;box-shadow:2px 2px 6px 0 rgba(0,0,0,.3);height:100%;max-width:100%;-o-object-fit:cover;object-fit:cover;width:100%}ul.filebird-block-filebird-gallery.layout-masonry{-moz-column-count:var(--columns);-moz-column-gap:var(--space);column-gap:var(--space);-moz-column-width:var(--min-width);columns:var(--min-width) var(--columns);display:block;overflow:auto}ul.filebird-block-filebird-gallery.layout-masonry li{margin-bottom:var(--space)}ul.filebird-block-filebird-gallery li{list-style:none}ul.filebird-block-filebird-gallery li figure{height:100%;margin:0;padding:0;position:relative;width:100%}ul.filebird-block-filebird-gallery li figure figcaption{background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.3) 70%,transparent);bottom:0;box-sizing:border-box;color:#fff;font-size:.8em;margin:0;max-height:100%;overflow:auto;padding:3em .77em .7em;position:absolute;text-align:center;width:100%;z-index:2}ul.filebird-block-filebird-gallery li figure figcaption a{color:inherit}
+
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='h5p-plugin-styles-css' href='https://astrantia.net/wp/wp-content/plugins/h5p/h5p-php-library/styles/h5p.css?ver=1.16.0' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css' href='https://astrantia.net/wp/wp-content/themes/bam/style.css?ver=6.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css' href='https://astrantia.net/wp/wp-content/themes/Bam-child/style.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='https://astrantia.net/wp/wp-content/themes/bam/assets/fonts/css/all.min.css?ver=5.15.4' type='text/css' media='all' />
+<link rel='stylesheet' id='bam-style-css' href='https://astrantia.net/wp/wp-content/themes/Bam-child/style.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bam-google-fonts-css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100i%2C200i%2C300i%2C400i%2C500i%2C600i%2C700i%2C800i%2C900i|Roboto+Condensed%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100i%2C200i%2C300i%2C400i%2C500i%2C600i%2C700i%2C800i%2C900i%26subset%3Dlatin' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://astrantia.net/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://astrantia.net/wp-json/wp/v2/posts/896" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://astrantia.net/wp/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.7.5" />
+<link rel="canonical" href="https://astrantia.net/methodes/pour-et-pourquoi-deux-mots-interdits-en-biologie/" />
+<link rel='shortlink' href='https://astrantia.net/?p=896' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://astrantia.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fastrantia.net%2Fmethodes%2Fpour-et-pourquoi-deux-mots-interdits-en-biologie%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://astrantia.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fastrantia.net%2Fmethodes%2Fpour-et-pourquoi-deux-mots-interdits-en-biologie%2F&#038;format=xml" />
+<!-- Analytics by WP Statistics v14.11.4 - https://wp-statistics.com -->
+<meta name="generator" content="Elementor 3.25.11; features: additional_custom_breakpoints, e_optimized_control_loading; settings: css_print_method-external, google_font-enabled, font_display-auto">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+					<style type="text/css">
+					.site-title,
+			.site-description {
+				position: absolute;
+				clip: rect(1px, 1px, 1px, 1px);
+				display: none;
+			}
+				</style>
+		<link rel="icon" href="https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-icone-site-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-icone-site-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-icone-site-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-icone-site-1-270x270.png" />
+
+		<style type="text/css" id="theme-custom-css">
+			/* Header CSS */
+                    .container {
+                        width: 1900px;
+                    }
+                
+                    @media ( min-width: 768px ) {
+                        #primary {
+                            width: 73%;
+                        }
+                    }
+                
+                    @media ( min-width: 768px ) {
+                        #secondary {
+                            width: 27%;
+                        }
+                    }
+                /* Color CSS */
+                
+                    blockquote {
+                        border-left: 4px solid #2f4858;
+                    }
+
+                    button,
+                    input[type="button"],
+                    input[type="reset"],
+                    input[type="submit"] {
+                        background: #2f4858;
+                    }
+
+                    .wp-block-search .wp-block-search__button {
+                        background: #2f4858;
+                    }
+
+                    .bam-readmore {
+                        background: #2f4858;
+                    }
+
+                    .site-title a, .site-description {
+                        color: #2f4858;
+                    }
+
+                    .site-header.default-style .main-navigation ul li a:hover {
+                        color: #2f4858;
+                    }
+
+                    .site-header.default-style .main-navigation ul ul li a:hover {
+                        background: #2f4858;
+                    }
+
+                    .site-header.default-style .main-navigation .current_page_item > a,
+                    .site-header.default-style .main-navigation .current-menu-item > a,
+                    .site-header.default-style .main-navigation .current_page_ancestor > a,
+                    .site-header.default-style .main-navigation .current-menu-ancestor > a {
+                        color: #2f4858;
+                    }
+
+                    .site-header.horizontal-style .main-navigation ul li a:hover {
+                        color: #2f4858;
+                    }
+
+                    .site-header.horizontal-style .main-navigation ul ul li a:hover {
+                        background: #2f4858;
+                    }
+
+                    .site-header.horizontal-style .main-navigation .current_page_item > a,
+                    .site-header.horizontal-style .main-navigation .current-menu-item > a,
+                    .site-header.horizontal-style .main-navigation .current_page_ancestor > a,
+                    .site-header.horizontal-style .main-navigation .current-menu-ancestor > a {
+                        color: #2f4858;
+                    }
+
+                    .posts-navigation .nav-previous a:hover,
+                    .posts-navigation .nav-next a:hover {
+                        color: #2f4858;
+                    }
+
+                    .post-navigation .nav-previous .post-title:hover,
+                    .post-navigation .nav-next .post-title:hover {
+                        color: #2f4858;
+                    }
+
+                    .pagination .page-numbers.current {
+                        background: #2f4858;
+                        border: 1px solid #2f4858;
+                        color: #ffffff;
+                    }
+                      
+                    .pagination a.page-numbers:hover {
+                        background: #2f4858;
+                        border: 1px solid #2f4858;
+                    }
+
+                    .widget a:hover,
+                    .widget ul li a:hover {
+                        color: #2f4858;
+                    }
+
+                    li.bm-tab.th-ui-state-active a {
+                        border-bottom: 1px solid #2f4858;
+                    }
+
+                    .footer-widget-area .widget a:hover {
+                        color: #2f4858;
+                    }
+
+                    .bms-title a:hover {
+                        color: #2f4858;
+                    }
+
+                    .bam-entry .entry-title a:hover {
+                        color: #2f4858;
+                    }
+
+                    .related-post-meta a:hover,
+                    .entry-meta a:hover {
+                        color: #2f4858;
+                    }
+
+                    .related-post-meta .byline a:hover,
+                    .entry-meta .byline a:hover {
+                        color: #2f4858;
+                    }
+
+                    .cat-links a {
+                        color: #2f4858;
+                    }
+
+                    .tags-links a:hover {
+                        background: #2f4858;
+                    }
+
+                    .related-post-title a:hover {
+                        color: #2f4858;
+                    }
+
+                    .author-posts-link:hover {
+                        color: #2f4858;
+                    }
+
+                    .comment-author a {
+                        color: #2f4858;
+                    }
+
+                    .comment-metadata a:hover,
+                    .comment-metadata a:focus,
+                    .pingback .comment-edit-link:hover,
+                    .pingback .comment-edit-link:focus {
+                        color: #2f4858;
+                    }
+
+                    .comment-reply-link:hover,
+                    .comment-reply-link:focus {
+                        background: #2f4858;
+                    }
+
+                    .comment-notes a:hover,
+                    .comment-awaiting-moderation a:hover,
+                    .logged-in-as a:hover,
+                    .form-allowed-tags a:hover {
+                        color: #2f4858;
+                    }
+
+                    .required {
+                        color: #2f4858;
+                    }
+
+                    .comment-reply-title small a:before {
+                        color: #2f4858;
+                    }
+
+                    .wp-block-quote {
+                        border-left: 4px solid #2f4858;
+                    }
+
+                    .wp-block-quote[style*="text-align:right"], .wp-block-quote[style*="text-align: right"] {
+                        border-right: 4px solid #2f4858;
+                    }
+
+                    .site-info a:hover {
+                        color: #2f4858;
+                    }
+
+                    #bam-tags a, .widget_tag_cloud .tagcloud a {
+                        background: #2f4858;
+                    }
+
+                
+                    .page-content a,
+                    .entry-content a {
+                        color: #33658a;
+                    }
+                
+                    .page-content a:hover,
+                    .entry-content a:hover {
+                        color: #f6ae2d;
+                    }
+                
+                    button,
+                    input[type="button"],
+                    input[type="reset"],
+                    input[type="submit"],
+                    .wp-block-search .wp-block-search__button,
+                    .bam-readmore {
+                        background: #f6ae2d;
+                    }
+                
+                    button,
+                    input[type="button"],
+                    input[type="reset"],
+                    input[type="submit"],
+                    .wp-block-search .wp-block-search__button,
+                    .bam-readmore {
+                        color: #2f4858;
+                    }
+                
+                    button:hover,
+                    input[type="button"]:hover,
+                    input[type="reset"]:hover,
+                    input[type="submit"]:hover,
+                    .wp-block-search .wp-block-search__button:hover,
+                    .bam-readmore:hover {
+                        background: #33658a;
+                    }
+                
+                    body.boxed-layout.custom-background,
+                    body.boxed-layout {
+                        background-color: #dddddd;
+                    }
+                
+                    body.boxed-layout.custom-background.separate-containers,
+                    body.boxed-layout.separate-containers {
+                        background-color: #dddddd;
+                    }
+                
+                    body.wide-layout.custom-background.separate-containers,
+                    body.wide-layout.separate-containers {
+                        background-color: #eeeeee;
+                    }
+                
+                    .related-post-meta, 
+                    .entry-meta,
+                    .related-post-meta .byline a, 
+                    .entry-meta .byline a,
+                    .related-post-meta a, 
+                    .entry-meta a {
+                        color: #33658a;
+                    }
+                
+                    .related-post-meta .byline a:hover, 
+                    .entry-meta .byline a:hover,
+                    .related-post-meta a:hover, 
+                    .entry-meta a:hover {
+                        color: #86bbd8;
+                    }
+                /* Header CSS */
+                    .site-logo-image img {
+                        max-height: 150px;
+                    }
+                
+                        .site-header.default-style .main-navigation ul li a, .site-header.default-style .bam-search-button-icon, .site-header.default-style .menu-toggle { line-height: 46px; }
+                        .site-header.default-style .main-navigation ul ul li a { line-height: 1.3; }
+                        .site-header.default-style .bam-search-box-container { top: 46px }
+                    
+                        .site-header.default-style { background-color: #2f4858; }
+                    
+                        .site-header.default-style .main-navigation { background: #33658a; }
+                    
+                        .site-header.default-style .main-navigation ul li a:hover { color: #f6ae2d; }
+                        .site-header.default-style .main-navigation .current_page_item > a, .site-header.default-style .main-navigation .current-menu-item > a, .site-header.default-style .main-navigation .current_page_ancestor > a, .site-header.default-style .main-navigation .current-menu-ancestor > a { color: #f6ae2d; }
+                    
+                        .site-header.default-style .main-navigation ul ul {
+                            background-color: #86bbd8;
+                        }
+                    
+                        .site-header.default-style .main-navigation ul ul li a {
+                            color: #f6ae2d;
+                        }
+                    
+                        .site-header.default-style .main-navigation ul ul li a:hover {
+                            background-color: #33658a;
+                        }
+                    
+                        .site-header.default-style #site-header-inner {
+                            padding-top: 18px;
+                        }
+                    
+                        .site-header.default-style #site-header-inner {
+                            padding-bottom: 18px;
+                        }
+                    /* Top Bar CSS */
+                    .bam-topbar, .top-navigation ul ul {
+                        background: #2f4858;
+                    }
+                
+                    .bam-topbar {
+                        border-bottom: 1px solid #2f4858;
+                    }
+                
+                    .bam-topbar {
+                        color: #ffffff;
+                    }
+                
+                    .bam-topbar a {
+                        color: #ffffff;
+                    }
+                
+                    .bam-topbar a:hover {
+                        color: #f6ae2d;
+                    }
+                
+                        .bam-topbar-social.light .bam-social-link i:hover {
+                            color: #f6ae2d !important;
+                        }
+                    /* Typography CSS */h1, h2, h3, h4, h5, h6, .site-title, .bam-entry .entry-title a, .widget-title, .is-style-bam-widget-title, .entry-title, .related-section-title, .related-post-title a, .single .entry-title, .archive .page-title{color:#2f4858;}.main-navigation li a{font-size:22px;}.widget-title, .is-style-bam-widget-title{color:#2f4858;}/* Footer CSS */
+                    .footer-widget-area {
+                        background: #2f4858;
+                    }
+                
+                    .footer-widget-area .widget a {
+                        color: #86bbd8;
+                    }
+                
+                    .footer-widget-area .widget a:hover {
+                        color: #f6ae2d;
+                    }
+                
+                    .site-info {
+                        background: #2f4858;
+                    }
+                
+                    .site-info a {
+                        color: #86bbd8;
+                    }
+                
+                    .site-info a:hover {
+                        color: #f6ae2d;
+                    }		</style>
+
+	</head>
+
+<body class="post-template-default single single-post postid-896 single-format-standard wp-custom-logo wp-embed-responsive wide-layout left-sidebar separate-containers elementor-default elementor-kit-285">
+
+
+
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Passer au contenu</a>
+
+	
+	
+
+
+<header id="masthead" class="site-header default-style">
+
+    
+    
+
+<div id="site-header-inner" class="clearfix container-fluid left-logo">
+
+    <div class="site-branding">
+    <div class="site-branding-inner">
+
+                    <div class="site-logo-image"><a href="https://astrantia.net/" class="custom-logo-link" rel="home"><img width="1504" height="383" src="https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-logo-titre-blanc-1.png" class="custom-logo" alt="ASTRANTIA.NET &#8211; les SVT en prépa" decoding="async" srcset="https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-logo-titre-blanc-1.png 1504w, https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-logo-titre-blanc-1-300x76.png 300w, https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-logo-titre-blanc-1-1024x261.png 1024w, https://astrantia.net/wp/wp-content/uploads/2020/07/cropped-logo-titre-blanc-1-768x196.png 768w" sizes="(max-width: 1504px) 100vw, 1504px" /></a></div>
+        
+        <div class="site-branding-text">
+                            <p class="site-title"><a href="https://astrantia.net/" rel="home">ASTRANTIA.NET &#8211; les SVT en prépa</a></p>
+                                <p class="site-description">Ressources en SVT, biologie, géologie, pour les étudiants de classes préparatoires ATS, BCPST et TB</p>
+                    </div><!-- .site-branding-text -->
+
+    </div><!-- .site-branding-inner -->
+</div><!-- .site-branding -->
+    
+<div class="header-sidebar">
+    <div class="header-sidebar-inner">
+        <section id="block-3" class="widget widget_block widget_media_image"><div class="wp-block-image">
+<figure class="alignright size-full is-resized"><a href="https://fauriel.astrantia.net/moodle"><img fetchpriority="high" fetchpriority="high" decoding="async" width="380" height="380" src="https://astrantia.net/wp/wp-content/uploads/2023/11/login.png" alt="Login" class="wp-image-1842" style="aspect-ratio:1;width:37px;height:auto" srcset="https://astrantia.net/wp/wp-content/uploads/2023/11/login.png 380w, https://astrantia.net/wp/wp-content/uploads/2023/11/login-300x300.png 300w, https://astrantia.net/wp/wp-content/uploads/2023/11/login-100x100.png 100w" sizes="(max-width: 380px) 100vw, 380px" /></a></figure></div></section><section id="block-4" class="widget widget_block">
+<ul class="wp-block-social-links is-layout-flex wp-block-social-links-is-layout-flex"></ul>
+</section><section id="block-5" class="widget widget_block">
+<ul class="wp-block-social-links is-layout-flex wp-block-social-links-is-layout-flex"></ul>
+</section><section id="block-7" class="widget widget_block">
+<ul class="wp-block-social-links is-layout-flex wp-block-social-links-is-layout-flex"></ul>
+</section><section id="block-8" class="widget widget_block">
+<ul class="wp-block-social-links is-layout-flex wp-block-social-links-is-layout-flex"></ul>
+</section>    </div><!-- .header-sidebar-inner -->
+</div><!-- .header-sidebar -->
+    
+</div><!-- #site-header-inner -->
+
+
+
+<nav id="site-navigation" class="main-navigation">
+
+    <div id="site-navigation-inner" class="align-center show-search">
+        
+        <div class="menu-menu-principal-container"><ul id="primary-menu" class="menu"><li id="menu-item-209" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-209"><a target="_blank" href="https://astrantia.net/sciences">Sciences</a></li>
+<li id="menu-item-764" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-764"><a href="https://astrantia.net/methodes/">MÉTHODES</a></li>
+<li id="menu-item-301" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-301"><a href="https://astrantia.net/entrainements">Entraînements</a></li>
+<li id="menu-item-303" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-303"><a href="https://astrantia.net/orientation">Orientation</a></li>
+<li id="menu-item-765" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-765"><a href="https://astrantia.net/miscellanees/">Miscellanées naturalistes</a></li>
+</ul></div><div class="bam-search-button-icon">
+    <i class="fas fa-search" aria-hidden="true"></i>
+</div>
+<div class="bam-search-box-container">
+    <div class="bam-search-box">
+        <form role="search" method="get" class="search-form" action="https://astrantia.net/">
+				<label>
+					<span class="screen-reader-text">Rechercher :</span>
+					<input type="search" class="search-field" placeholder="Rechercher…" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Rechercher" />
+			</form>    </div><!-- th-search-box -->
+</div><!-- .th-search-box-container -->
+
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" data-toggle-target=".mobile-navigation"><i class="fas fa-bars"></i>Menu</button>
+        
+    </div><!-- .container -->
+    
+</nav><!-- #site-navigation -->
+<div class="mobile-dropdown">
+    <nav class="mobile-navigation">
+        <div class="menu-menu-principal-container"><ul id="primary-menu-mobile" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-209"><a target="_blank" href="https://astrantia.net/sciences">Sciences</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-764"><a href="https://astrantia.net/methodes/">MÉTHODES</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-301"><a href="https://astrantia.net/entrainements">Entraînements</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-303"><a href="https://astrantia.net/orientation">Orientation</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-765"><a href="https://astrantia.net/miscellanees/">Miscellanées naturalistes</a></li>
+</ul></div>    </nav>
+</div>
+
+    
+         
+</header><!-- #masthead -->
+
+
+	
+	<div id="content" class="site-content">
+		<div class="container">
+
+	
+	<div id="primary" class="content-area">
+
+		
+		<main id="main" class="site-main">
+
+			
+			
+<article id="post-896" class="bam-single-post post-896 post type-post status-publish format-standard has-post-thumbnail hentry category-methodes tag-cou tag-finalisme tag-girafe">
+
+	
+	<div class="category-list">
+		<span class="cat-links"><a href="https://astrantia.net/category/methodes/" rel="category tag">Méthodes</a></span>	</div><!-- .category-list -->
+
+	<header class="entry-header">
+		<h1 class="entry-title">Pour et pourquoi, deux mots interdits en biologie</h1>			<div class="entry-meta">
+				<span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/methodes/pour-et-pourquoi-deux-mots-interdits-en-biologie/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2020-07-17T14:09:49+00:00">17 juillet 2020</time><time class="updated" datetime="2023-10-18T08:46:04+00:00">18 octobre 2023</time></a></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	
+		
+	
+	<div class="entry-content">
+		
+<p>«&nbsp;Pourquoi la girafe a un long cou&nbsp;?&nbsp;» Si la question peut s’entendre (nous verrons que la formulation est imprécise), la réponse sera nécessairement finaliste : «&nbsp;<strong>pour</strong> manger les feuilles les plus hautes des arbres&nbsp;». L’idée qui vient alors en tête pourrait s&rsquo;illustrer ainsi :</p>
+
+
+
+<figure class="wp-block-gallery aligncenter has-nested-images columns-3 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex">
+<figure class="wp-block-image size-large"><a href="https://astrantia.net/wp/wp-content/uploads/2020/07/girafe1-scaled.jpg"><img decoding="async" width="1024" height="931" data-id="898" src="https://astrantia.net/wp/wp-content/uploads/2020/07/girafe1-1024x931.jpg" alt="" class="wp-image-898" srcset="https://astrantia.net/wp/wp-content/uploads/2020/07/girafe1-1024x931.jpg 1024w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe1-300x273.jpg 300w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe1-768x698.jpg 768w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe1-1536x1397.jpg 1536w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe1-2048x1862.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="wp-element-caption">une contrainte</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://astrantia.net/wp/wp-content/uploads/2020/07/spouf-scaled.jpg"><img loading="lazy" decoding="async" width="1024" height="931" data-id="899" src="https://astrantia.net/wp/wp-content/uploads/2020/07/spouf-1024x931.jpg" alt="" class="wp-image-899" srcset="https://astrantia.net/wp/wp-content/uploads/2020/07/spouf-1024x931.jpg 1024w, https://astrantia.net/wp/wp-content/uploads/2020/07/spouf-300x273.jpg 300w, https://astrantia.net/wp/wp-content/uploads/2020/07/spouf-768x698.jpg 768w, https://astrantia.net/wp/wp-content/uploads/2020/07/spouf-1536x1397.jpg 1536w, https://astrantia.net/wp/wp-content/uploads/2020/07/spouf-2048x1862.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="wp-element-caption">action déterministe (= pour répondre à la contrainte)</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://astrantia.net/wp/wp-content/uploads/2020/07/girafe2-scaled.jpg"><img loading="lazy" decoding="async" width="1024" height="928" data-id="900" src="https://astrantia.net/wp/wp-content/uploads/2020/07/girafe2-1024x928.jpg" alt="" class="wp-image-900" srcset="https://astrantia.net/wp/wp-content/uploads/2020/07/girafe2-1024x928.jpg 1024w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe2-300x272.jpg 300w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe2-768x696.jpg 768w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe2-1536x1393.jpg 1536w, https://astrantia.net/wp/wp-content/uploads/2020/07/girafe2-2048x1857.jpg 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="wp-element-caption">le cou : la réponse à la contrainte</figcaption></figure>
+</figure>
+
+
+
+<p>*<em>comme les bovins, ovins et caprins, la girafe rumine. Elle dispose donc d&rsquo;un appareil digestif spécialisé, formé d&rsquo;une panse, où des fermentations microbiennes digèrent la matière organique végétale. </em></p>
+
+
+
+<p>Dans ce schéma, l’action d’apparition du cou est déterministe&nbsp;: elle est commandée par la contrainte de départ&nbsp;; le cou long apparaît ainsi comme la réponse à cette contrainte. On est dans une <strong>démarche finaliste</strong>&nbsp;: l’organe est apparu <strong>pour</strong> mieux nourrir l’animal.</p>
+
+
+
+<h4 class="wp-block-heading">Permet de, plutôt que Pour</h4>
+
+
+
+<p>Cette façon de penser est naturelle&nbsp;pour nous&nbsp;: tout objet a une fonction, conçue au départ pour répondre à un problème. Les lunettes sont là pour améliorer notre vue, les chaussures pour protéger nos pieds, les vêtements pour nous tenir chaud. <strong>Mais ce raisonnement ne s’applique pas au vivant</strong>&nbsp;: une adaptation biologique n’apparaît pas en réponse à une contrainte. Elle apparaît <strong>par hasard</strong>, parmi de nombreuses autres variations (de couleur, de pilosité, de musculature…). Si une variation s’avère avantageuse, elle peut être sélectionnée par sélection naturelle. La girafe a un cou long, c’est un fait&nbsp;; il se trouve que <strong>ça lui permet </strong>de se nourrir des feuilles les plus hautes. C&rsquo;est un avantage qui explique que ce caractère soit conservé chez l&rsquo;espèce. L’expression «&nbsp;permet de&nbsp;» est très différente de «&nbsp;pour&nbsp;»&nbsp;: pas de finalisme ici.</p>
+
+
+
+<p>Tout comme «&nbsp;pour&nbsp;», les expressions «&nbsp;dans le but de&#8230;&nbsp;» ou «&nbsp;l’objectif de cet organe&#8230;&nbsp;», «&nbsp;afin de&#8230;&nbsp;» sont à proscrire quand on décrit des phénomènes biologiques. Quelques exemples&nbsp;:</p>
+
+
+
+<ul class="wp-block-list">
+<li>« l&rsquo;animal <span style="color:#f26419" class="has-inline-color">doit éviter</span> les pertes d&rsquo;eau en milieu aérien, <span style="color:#f26419" class="has-inline-color">donc</span> il excrète l&rsquo;azote sous forme d&rsquo;urée ». Préférer « l&rsquo;animal excrète l&rsquo;azote sous forme d&rsquo;urée en milieu aérien, <span style="color:#33658a" class="has-inline-color"><strong>ce qui permet </strong></span>d&rsquo;éviter les pertes d&rsquo;eau ».</li>
+
+
+
+<li>«&nbsp;dans le vivant, les cellules <span style="color:#f26419" class="has-inline-color">doivent effectuer </span>des travaux cellulaires <span style="color:#f26419" class="has-inline-color">pour maintenir </span>l&rsquo;organisme en vie&nbsp;». Préférer «&nbsp;dans le vivant, les cellules effectuent des travaux cellulaires, <span style="color:#33658a" class="has-inline-color"><strong>qui permettent </strong></span>de maintenir l’organisme en vie<span style="color:#33658a" class="has-inline-color">&nbsp;</span>»</li>
+
+
+
+<li>«&nbsp;les parasites profitent de l&rsquo;hôte <span style="color:#f26419" class="has-inline-color">afin de </span>perpétuer leur population&nbsp;». Préférer «&nbsp;les parasites se développent au sein d’un hôte, <span style="color:#33658a" class="has-inline-color"><strong>ce qui entraîne</strong></span> le développement de leur population.</li>
+
+
+
+<li>«&nbsp;les graines possèdent de grandes réserves <span style="color:#f26419" class="has-inline-color">pour assurer </span>la survie de l’embryon&nbsp;». Préférer «&nbsp;les graines possèdent de grandes réserves, <strong><span style="color:#33658a" class="has-inline-color">qui permettent</span> </strong>la survie de l’embryon&nbsp;».</li>
+
+
+
+<li>«&nbsp;Les graines sont des structures <span style="color:#f26419" class="has-inline-color">douées</span> d’une mobilité». Préférer «&nbsp;les graines sont mobiles&nbsp;».</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading">Pourquoi est le problème</h4>
+
+
+
+<p>Si l’on reprend la question de départ, sa formulation pose problème&nbsp;: que signifie «&nbsp;pourquoi&nbsp;»&nbsp;? Ça peut être «&nbsp;quel est l’intérêt pour la girafe&nbsp;»&nbsp;? ou alors «&nbsp;comment ce cou est apparu&nbsp;»&nbsp;? En règle générale, en biologie il est déconseillé d’utiliser le mot pourquoi, qui renvoie bien souvent à une réponse commençant par «&nbsp;pour&nbsp;», fatalement finaliste.</p>
+
+
+
+<h4 class="wp-block-heading">Ce cou&#8230;une affaire de sexe !</h4>
+
+
+
+<p>Tordons le cou à une idée reçue&nbsp;: si la longueur extraordinaire de ce fameux organe est un avantage indéniable pour brouter les feuilles les plus hautes, ce n’est probablement pas la raison de sa sélection au cours de l’évolution. En effet, en période de grande sécheresse, là où l’accès à la nourriture est le plus difficile, les girafes montrent une préférence pour les buissons bas de mimosas, et d’acacias… !</p>
+
+
+
+<p>Une autre explication plus pertinente, est liée à la reproduction : les mâles s’adonnent à une pratique tout à fait originale, nommée «&nbsp;<strong>necking</strong>&nbsp;», que l’on pourrait traduire par «&nbsp;combats de cous&nbsp;»(1). Des rituels qui peuvent être violents, à l’issue desquels le vainqueur gagne l’accès à la reproduction avec une femelle. Le caractère «&nbsp;cou long et musclé&nbsp;» est ainsi transmis aux descendants bien plus vite. C’est de la <strong>sélection sexuelle</strong>. L&rsquo;apparition du cou de la girafe serait donc à rapprocher d&rsquo;autres organes exceptionnels, comme les bois du cerf ou la queue du paon.</p>
+
+
+
+<p>(1): Grandeurs et décadences de la girafe, JL Hartenberger, Belin, 2010<br>Simmons, Robert &amp; Scheepers, Lue. (1996).<a href="http://astrantia.net/documents-telechargeables/references/Winning_by_a_Neck_Sexual_Selection_in_the_Evolutio.pdf" data-type="URL" data-id="http://astrantia.net/documents-telechargeables/references/Winning_by_a_Neck_Sexual_Selection_in_the_Evolutio.pdf" target="_blank" rel="noreferrer noopener"> Winning by a Neck: Sexual Selection in the Evolution of Giraffe</a>. American Naturalist. 148. 771-786. 10.1086/285955.</p>
+	</div><!-- .entry-content -->
+
+	
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+	
+</article><!-- #post-896 -->
+	<nav class="navigation post-navigation" aria-label="Publications">
+		<h2 class="screen-reader-text">Navigation de l’article</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://astrantia.net/miscellanees-naturalistes/chelidoine-ou-herbe-a-verrue/" rel="prev"><span class="meta-nav" aria-hidden="true">Publication précédente</span> <span class="screen-reader-text">Publication précédente :</span> <br/><span class="post-title">Chélidoine, ou « herbe à verrues »</span></a></div><div class="nav-next"><a href="https://astrantia.net/sciences/sciences-plasmolyse/" rel="next"><span class="meta-nav" aria-hidden="true">Publication suivante</span> <span class="screen-reader-text">Publication suivante :</span> <br/><span class="post-title">Quand la cellule gonfle et dégonfle : turgescence et plasmolyse</span></a></div></div>
+	</nav>
+			
+		</main><!-- #main -->
+
+		
+	</div><!-- #primary -->
+
+	
+
+
+<aside id="secondary" class="widget-area">
+
+	
+	<section id="sidebar_posts-3" class="widget widget_sidebar_posts">		<div class="bam-category-posts">
+		<h4 class="widget-title">Dernières publications</h4>
+		
+			
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/fermentations/" rel="bookmark" title="Les fermentations, c&rsquo;est la vie !">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2023/12/levain-LR-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/fermentations/" rel="bookmark">Les fermentations, c&rsquo;est la vie !</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/fermentations/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2023-12-06T07:22:49+00:00">6 décembre 2023</time><time class="updated" datetime="2023-12-06T13:35:36+00:00">6 décembre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/methodes/sciences-et-croyances/" rel="bookmark" title="Sciences et Croyances">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2023/11/montre-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/methodes/sciences-et-croyances/" rel="bookmark">Sciences et Croyances</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/methodes/sciences-et-croyances/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2023-11-29T15:36:16+00:00">29 novembre 2023</time><time class="updated" datetime="2024-10-07T07:59:24+00:00">7 octobre 2024</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/la-peau/" rel="bookmark" title="La peau : un super-organe qui nous protège">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2023/11/peau-super-heros-LR-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/la-peau/" rel="bookmark">La peau : un super-organe qui nous protège</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/la-peau/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2023-11-28T15:16:17+00:00">28 novembre 2023</time><time class="updated" datetime="2023-11-28T16:16:13+00:00">28 novembre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/organisation-dune-plante-a-fleur-angiosperme/" rel="bookmark" title="Organisation d&rsquo;une plante à fleur Angiosperme">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2023/11/image-mise-en-avant-120x85.png" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/organisation-dune-plante-a-fleur-angiosperme/" rel="bookmark">Organisation d&rsquo;une plante à fleur Angiosperme</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/organisation-dune-plante-a-fleur-angiosperme/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2023-11-14T13:55:34+00:00">14 novembre 2023</time><time class="updated" datetime="2023-11-23T20:42:15+00:00">23 novembre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/automne-quand-les-arbres-sactivent/" rel="bookmark" title="L’automne : quand les arbres s’activent avant l’hiver">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2023/10/IMG_5828-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/automne-quand-les-arbres-sactivent/" rel="bookmark">L’automne : quand les arbres s’activent avant l’hiver</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/automne-quand-les-arbres-sactivent/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2023-10-19T21:40:39+00:00">19 octobre 2023</time><time class="updated" datetime="2023-11-03T10:54:14+00:00">3 novembre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/lune/" rel="bookmark" title="La Lune : une boule sous les projecteurs">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2023/09/image-titre-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/lune/" rel="bookmark">La Lune : une boule sous les projecteurs</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/lune/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2023-09-19T21:16:47+00:00">19 septembre 2023</time><time class="updated" datetime="2023-10-18T08:21:52+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/miscellanees-naturalistes/lucanes/" rel="bookmark" title="Accouplement d&rsquo;un insecte coléoptère : le Lucane">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2023/07/Accouplement-1024x611-1-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/miscellanees-naturalistes/lucanes/" rel="bookmark">Accouplement d&rsquo;un insecte coléoptère : le Lucane</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/miscellanees-naturalistes/lucanes/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2023-07-05T08:36:48+00:00">5 juillet 2023</time><time class="updated" datetime="2023-10-18T08:48:09+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/orientation/ecoles-geologie/" rel="bookmark">Quelles écoles d&rsquo;ingénieur géologue en France ?</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/orientation/ecoles-geologie/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2022-11-29T16:39:50+00:00">29 novembre 2022</time><time class="updated" datetime="2023-10-18T14:25:43+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/orientation/ingenieur-geologue/" rel="bookmark">Que peut-on faire avec un diplôme d&rsquo;ingénieur géologue ?</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/orientation/ingenieur-geologue/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2022-11-29T16:21:56+00:00">29 novembre 2022</time><time class="updated" datetime="2023-10-18T08:37:34+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/orientation/ecoles-agro/" rel="bookmark">Quelles écoles d&rsquo;ingénieur Agro en France ?</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/orientation/ecoles-agro/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2022-11-29T15:43:40+00:00">29 novembre 2022</time><time class="updated" datetime="2023-10-18T08:38:35+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/orientation/ingenieur-agro/" rel="bookmark">Que peut-on faire avec un diplôme d&rsquo;ingénieur Agro ?</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/orientation/ingenieur-agro/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2022-11-29T15:17:31+00:00">29 novembre 2022</time><time class="updated" datetime="2023-11-22T21:33:17+00:00">22 novembre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/un-basalte-qui-fait-perdre-le-nord/" rel="bookmark" title="Un basalte qui fait perdre le Nord">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2022/09/boussole-miniature-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/un-basalte-qui-fait-perdre-le-nord/" rel="bookmark">Un basalte qui fait perdre le Nord</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/un-basalte-qui-fait-perdre-le-nord/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2022-09-19T08:58:39+00:00">19 septembre 2022</time><time class="updated" datetime="2023-10-18T08:39:16+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/miscellanees-naturalistes/le-trefle-blanc/" rel="bookmark" title="Le trèfle blanc">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2022/09/trefle-4-feuilles-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/miscellanees-naturalistes/le-trefle-blanc/" rel="bookmark">Le trèfle blanc</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/miscellanees-naturalistes/le-trefle-blanc/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2021-07-07T17:33:42+00:00">7 juillet 2021</time><time class="updated" datetime="2023-10-18T08:40:02+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/methodes/determination-florale/" rel="bookmark" title="Détermination florale, sur l&rsquo;exemple de la flore de Bonnier">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2021/06/1-1-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/methodes/determination-florale/" rel="bookmark">Détermination florale, sur l&rsquo;exemple de la flore de Bonnier</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/methodes/determination-florale/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2021-06-02T21:35:34+00:00">2 juin 2021</time><time class="updated" datetime="2023-10-18T08:40:17+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/methodes/prise-de-notes-1/" rel="bookmark" title="La prise de notes">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2021/03/logo-120x85.png" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/methodes/prise-de-notes-1/" rel="bookmark">La prise de notes</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/methodes/prise-de-notes-1/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2021-03-21T09:55:34+00:00">21 mars 2021</time><time class="updated" datetime="2023-10-18T08:40:55+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/miscellanees-naturalistes/angioschtroumpf/" rel="bookmark" title="L&rsquo;Angioschtroumpf">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2020/11/schtroumpf-LD-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/miscellanees-naturalistes/angioschtroumpf/" rel="bookmark">L&rsquo;Angioschtroumpf</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/miscellanees-naturalistes/angioschtroumpf/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2020-11-11T21:20:05+00:00">11 novembre 2020</time><time class="updated" datetime="2023-10-18T08:41:20+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/resistance-aux-antibiotiques/" rel="bookmark" title="Voir l&rsquo;évolution : la résistance aux antibiotiques">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2020/10/1-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" srcset="https://astrantia.net/wp/wp-content/uploads/2020/10/1-120x85.jpg 120w, https://astrantia.net/wp/wp-content/uploads/2020/10/1-e1605129133760.jpg 300w" sizes="(max-width: 120px) 100vw, 120px" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/resistance-aux-antibiotiques/" rel="bookmark">Voir l&rsquo;évolution : la résistance aux antibiotiques</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/resistance-aux-antibiotiques/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2020-10-31T18:07:38+00:00">31 octobre 2020</time><time class="updated" datetime="2023-10-18T08:41:48+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/sciences/sciences-plasmolyse/" rel="bookmark" title="Quand la cellule gonfle et dégonfle : turgescence et plasmolyse">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2020/09/plasmolyse-mini-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/sciences/sciences-plasmolyse/" rel="bookmark">Quand la cellule gonfle et dégonfle : turgescence et plasmolyse</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/sciences/sciences-plasmolyse/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2020-09-23T21:44:33+00:00">23 septembre 2020</time><time class="updated" datetime="2023-10-18T08:42:09+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/methodes/pour-et-pourquoi-deux-mots-interdits-en-biologie/" rel="bookmark" title="Pour et pourquoi, deux mots interdits en biologie">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2020/07/tete-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" srcset="https://astrantia.net/wp/wp-content/uploads/2020/07/tete-120x85.jpg 120w, https://astrantia.net/wp/wp-content/uploads/2020/07/tete-745x530.jpg 745w" sizes="(max-width: 120px) 100vw, 120px" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/methodes/pour-et-pourquoi-deux-mots-interdits-en-biologie/" rel="bookmark">Pour et pourquoi, deux mots interdits en biologie</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/methodes/pour-et-pourquoi-deux-mots-interdits-en-biologie/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2020-07-17T14:09:49+00:00">17 juillet 2020</time><time class="updated" datetime="2023-10-18T08:46:04+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								<div class="bms-post clearfix">
+													<div class="bms-thumb">
+								<a href="https://astrantia.net/miscellanees-naturalistes/chelidoine-ou-herbe-a-verrue/" rel="bookmark" title="Chélidoine, ou « herbe à verrues »">	
+									<img width="120" height="85" src="https://astrantia.net/wp/wp-content/uploads/2020/07/chelidoine-fleur-e1594242767162-120x85.jpg" class="attachment-bam-small size-bam-small wp-post-image" alt="" decoding="async" />								</a>
+							</div>
+												<div class="bms-details">
+							<h3 class="bms-title"><a href="https://astrantia.net/miscellanees-naturalistes/chelidoine-ou-herbe-a-verrue/" rel="bookmark">Chélidoine, ou « herbe à verrues »</a></h3>							<div class="entry-meta"><span class="posted-on"><i class="far fa-clock"></i><a href="https://astrantia.net/miscellanees-naturalistes/chelidoine-ou-herbe-a-verrue/" rel="bookmark"><time class="entry-date published sm-hu" datetime="2020-07-08T09:10:52+00:00">8 juillet 2020</time><time class="updated" datetime="2023-10-18T08:44:58+00:00">18 octobre 2023</time></a></span></div>
+						</div>
+					</div><!-- .bms-post -->
+								        
+        </div><!-- .bam-category-posts -->
+
+
+	</section>
+	
+</aside><!-- #secondary -->
+
+	</div><!-- .container -->
+	</div><!-- #content -->
+
+	
+	
+	<footer id="colophon" class="site-footer">
+
+		
+		
+		<div class="footer-widget-area clearfix th-columns-1">
+			<div class="container">
+				<div class="footer-widget-area-inner">
+					<div class="col column-1">
+						<section id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://astrantia.net/a-propos-de-ce-site/" > À propos de ce site </a> 
+et 
+<a href="https://astrantia.net/?page_id=2562" > mentions légales </a> 
+<br>
+<a href="mailto:contact@astrantia.net" > Contacter </a> le propriétaire du site pour toute question, remarque ou souhait de contribution
+</div></section>					</div>
+
+					
+					
+									</div><!-- .footer-widget-area-inner -->
+			</div><!-- .container -->
+		</div><!-- .footer-widget-area -->
+
+		<div class="site-info clearfix">
+			<div class="container">
+				<div class="copyright-container">
+					Copyright &#169; 2026 <a href="https://astrantia.net/" title="ASTRANTIA.NET - les SVT en prépa" >ASTRANTIA.NET - les SVT en prépa</a>.
+				</div><!-- .copyright-container -->
+			</div><!-- .container -->
+		</div><!-- .site-info -->
+
+		
+	</footer><!-- #colophon -->
+
+	
+</div><!-- #page -->
+
+
+			<script type='text/javascript'>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<style id='core-block-supports-inline-css' type='text/css'>
+.wp-block-gallery.wp-block-gallery-1{--wp--style--unstable-gallery-gap:var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) );gap:var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) );}
+</style>
+<script type="text/javascript" src="https://astrantia.net/wp/wp-content/themes/bam/assets/js/main.js?ver=1.0" id="bam-main-js"></script>
+<script type="text/javascript" src="https://astrantia.net/wp/wp-content/themes/bam/assets/js/skip-link-focus-fix.js?ver=20151215" id="bam-skip-link-focus-fix-js"></script>
+</body>
+</html>
