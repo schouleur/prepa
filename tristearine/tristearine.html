@@ -100,7 +100,7 @@
   fetch('tristearine.pdb')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (pdb) {
-      viewer.addModel(pdb, 'pdb');
+      viewer.addModel(pdb, 'pdb', { keepH: true });
       render();
       viewer.zoomTo();
       viewer.render();
