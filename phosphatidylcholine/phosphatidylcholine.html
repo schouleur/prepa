@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phosphatidylcholine en 3D</title>
+<script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; font-family: system-ui, sans-serif; background: #fff; color: #222; }
+  #wrap { display: flex; flex-direction: column; height: 100%; }
+  #bar { padding: 8px 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; background: #f3f4f6; border-bottom: 1px solid #ddd; }
+  #bar .sep { width: 1px; height: 22px; background: #ccc; margin: 0 4px; }
+  button { padding: 6px 10px; border: 1px solid #bbb; border-radius: 6px; background: #fff; cursor: pointer; font-size: 14px; }
+  button.on { background: #1f6feb; color: #fff; border-color: #1f6feb; }
+  #viewer { position: relative; flex: 1; min-height: 300px; }
+  #legend { padding: 6px 10px; font-size: 13px; border-top: 1px solid #ddd; background: #fafafa; line-height: 1.7; }
+  .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin: 0 4px 0 12px; vertical-align: middle; border: 1px solid #999; }
+  .dot:first-child { margin-left: 0; }
+  #msg { position: absolute; top: 10px; left: 10px; color: #ff8a8a; font-size: 14px; z-index: 5; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="bar">
+    <strong>Phosphatidylcholine (POPC) &ndash; C<sub>42</sub>H<sub>82</sub>NO<sub>8</sub>P</strong>
+    <button id="bGly">Glycérol</button>
+    <button id="bPho">Phosphate</button>
+    <button id="bCho">Choline</button>
+    <button id="bSat">Chaîne saturée</button>
+    <button id="bUns">Chaîne insaturée</button>
+    <button id="bDbl">Double liaison cis</button>
+    <span class="sep"></span>
+    <button id="bH" class="on">Afficher les H</button>
+    <button id="bStyle">Style : bâtonnets</button>
+    <button id="bSpin">Rotation</button>
+    <button id="bReset">Recentrer</button>
+  </div>
+  <div id="viewer"><div id="msg"></div></div>
+  <div id="legend">
+    <span class="dot" style="background:#909090"></span>C
+    <span class="dot" style="background:#ff0d0d"></span>O
+    <span class="dot" style="background:#ffffff"></span>H
+    <span class="dot" style="background:#3050f8"></span>N
+    <span class="dot" style="background:#ff8000"></span>P
+    <span id="lGly" style="display:none"><span class="dot" style="background:#59a14f"></span>C du glycérol</span>
+    <span id="lPho" style="display:none"><span class="dot" style="background:#ff8000"></span>groupe phosphate</span>
+    <span id="lCho" style="display:none"><span class="dot" style="background:#17becf"></span>C de la choline</span>
+    <span id="lSat" style="display:none"><span class="dot" style="background:#edc948"></span>chaîne saturée (palmitoyle, 16 C)</span>
+    <span id="lUns" style="display:none"><span class="dot" style="background:#b07aa1"></span>chaîne insaturée (oléoyle, 18 C)</span>
+    <span id="lDbl" style="display:none"><span class="dot" style="background:#ff2fb4"></span>C=C cis</span>
+  </div>
+</div>
+
+<script>
+  // Numéros d'atomes (colonne « serial » du fichier PDB)
+  var G = {
+    gly:  [19, 20, 21],
+    pho:  [22, 23, 24, 25, 26],
+    cho:  [27, 28, 30, 31, 32],
+    sat:  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    uns:  [34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52],
+    dbl:  [43, 44]
+  };
+  var COL = { gly: '#59a14f', cho: '#17becf', sat: '#edc948', uns: '#b07aa1', dbl: '#ff2fb4' };
+
+  var state = { gly: false, pho: false, cho: false, sat: false, uns: false, dbl: false,
+                h: true, style: 'stick', spin: false };
+  var viewer = $3Dmol.createViewer('viewer', { backgroundColor: '#1c2128' });
+
+  // Style selon le mode d'affichage ; sans couleur donnée : schéma Jmol (C gris, O rouge, H blanc...)
+  function mk(radius, scale, color) {
+    var colorSpec = color ? { color: color } : { colorscheme: 'Jmol' };
+    var s = {};
+    function withColor(o) { for (var k in colorSpec) o[k] = colorSpec[k]; return o; }
+    if (state.style === 'sphere') {
+      s.sphere = withColor({ scale: scale * 1.5 });
+    } else if (state.style === 'ballstick') {
+      s.stick = withColor({ radius: radius * 1.25 });
+      s.sphere = withColor({ scale: scale * 1.05 });
+    } else {
+      s.stick = withColor({ radius: radius });
+    }
+    return s;
+  }
+  function withBall(s, scale, color) {
+    if (!s.sphere) s.sphere = { scale: scale, color: color };
+    return s;
+  }
+
+  function render() {
+    viewer.setStyle({}, mk(0.14, 0.2));
+
+    if (state.sat) viewer.setStyle({ serial: G.sat }, mk(0.18, 0.28, COL.sat));
+    if (state.uns) viewer.setStyle({ serial: G.uns }, mk(0.18, 0.28, COL.uns));
+    if (state.dbl) viewer.setStyle({ serial: G.dbl }, withBall(mk(0.26, 0.42, COL.dbl), 0.42, COL.dbl));
+    if (state.cho) viewer.setStyle({ serial: G.cho }, mk(0.2, 0.3, COL.cho));
+    if (state.gly) viewer.setStyle({ serial: G.gly }, withBall(mk(0.24, 0.42, COL.gly), 0.42, COL.gly));
+    if (state.pho) viewer.setStyle({ serial: G.pho }, withBall(mk(0.22, 0.34), 0.34, '#ff8000'));
+    if (!state.h) viewer.setStyle({ elem: 'H' }, {});
+    viewer.render();
+
+    ['gly', 'pho', 'cho', 'sat', 'uns', 'dbl'].forEach(function (k) {
+      document.getElementById('l' + k.charAt(0).toUpperCase() + k.slice(1)).style.display = state[k] ? 'inline' : 'none';
+    });
+  }
+
+  function toggle(id, key) {
+    var b = document.getElementById(id);
+    b.addEventListener('click', function () {
+      state[key] = !state[key];
+      b.classList.toggle('on', state[key]);
+      render();
+    });
+  }
+  toggle('bGly', 'gly');
+  toggle('bPho', 'pho');
+  toggle('bCho', 'cho');
+  toggle('bSat', 'sat');
+  toggle('bUns', 'uns');
+  toggle('bDbl', 'dbl');
+  toggle('bH', 'h');
+
+  var order = ['stick', 'ballstick', 'sphere'];
+  var names = { stick: 'bâtonnets', ballstick: 'boules et bâtonnets', sphere: 'sphères' };
+  document.getElementById('bStyle').addEventListener('click', function () {
+    state.style = order[(order.indexOf(state.style) + 1) % order.length];
+    this.textContent = 'Style : ' + names[state.style];
+    render();
+  });
+
+  document.getElementById('bSpin').addEventListener('click', function () {
+    state.spin = !state.spin;
+    this.classList.toggle('on', state.spin);
+    viewer.spin(state.spin ? 'y' : false);
+  });
+  document.getElementById('bReset').addEventListener('click', function () {
+    viewer.zoomTo();
+    viewer.render();
+  });
+
+  fetch('phosphatidylcholine.pdb')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (pdb) {
+      viewer.addModel(pdb, 'pdb', { keepH: true });
+      render();
+      viewer.zoomTo();
+      viewer.render();
+    })
+    .catch(function () {
+      document.getElementById('msg').textContent =
+        "Impossible de charger phosphatidylcholine.pdb : le fichier doit être dans le même dossier que cette page.";
+    });
+
+  window.addEventListener('resize', function () { viewer.resize(); });
+</script>
+</body>
+</html>
