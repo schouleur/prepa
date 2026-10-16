@@ -22,7 +22,7 @@
 <div id="wrap">
   <div id="bar">
     <strong>Tristéarine (C<sub>57</sub>H<sub>110</sub>O<sub>6</sub>)</strong>
-    <button id="bGly" class="on">Glycérol en couleur</button>
+    <button id="bGly">Glycérol en couleur</button>
     <button id="bEst" class="on">Fonctions ester</button>
     <button id="bH">Afficher les H</button>
     <button id="bStyle">Style : bâtonnets</button>
@@ -42,7 +42,7 @@
   var GLY_C = [21, 22, 43];
   var ESTER = [18, 19, 20, 23, 24, 25, 44, 45, 46];
 
-  var state = { gly: true, est: true, h: false, style: 'stick', spin: false };
+  var state = { gly: false, est: true, h: false, style: 'stick', spin: false };
   var viewer = $3Dmol.createViewer('viewer', { backgroundColor: 'white' });
 
   function render() {
