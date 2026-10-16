@@ -24,6 +24,7 @@
   <div id="bar">
     <strong>Phosphatidylcholine (POPC) &ndash; C<sub>42</sub>H<sub>82</sub>NO<sub>8</sub>P</strong>
     <button id="bGly">Glycérol</button>
+    <button id="bEst">Liaisons ester</button>
     <button id="bPho">Phosphate</button>
     <button id="bCho">Choline</button>
     <button id="bSat">Chaîne saturée</button>
@@ -43,6 +44,7 @@
     <span class="dot" style="background:#3050f8"></span>N
     <span class="dot" style="background:#ff8000"></span>P
     <span id="lGly" style="display:none"><span class="dot" style="background:#59a14f"></span>C du glycérol</span>
+    <span id="lEst" style="display:none"><span class="dot" style="background:#4e79a7"></span>C du carbonyle (ester)</span>
     <span id="lPho" style="display:none"><span class="dot" style="background:#ff8000"></span>groupe phosphate</span>
     <span id="lCho" style="display:none"><span class="dot" style="background:#17becf"></span>C de la choline</span>
     <span id="lSat" style="display:none"><span class="dot" style="background:#edc948"></span>chaîne saturée (palmitoyle, 16 C)</span>
@@ -56,14 +58,16 @@
   var G = {
     gly:  [19, 20, 21],
     pho:  [22, 23, 24, 25, 26],
+    est:  [16, 17, 18, 33, 34, 35],   // les deux fonctions ester : C(=O)–O
+    estC: [16, 34],                    // carbones des carbonyles
     cho:  [27, 28, 30, 31, 32],
     sat:  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     uns:  [34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52],
     dbl:  [43, 44]
   };
-  var COL = { gly: '#59a14f', cho: '#17becf', sat: '#edc948', uns: '#b07aa1', dbl: '#ff2fb4' };
+  var COL = { est: '#4e79a7', gly: '#59a14f', cho: '#17becf', sat: '#edc948', uns: '#b07aa1', dbl: '#ff2fb4' };
 
-  var state = { gly: false, pho: false, cho: false, sat: false, uns: false, dbl: false,
+  var state = { gly: false, est: false, pho: false, cho: false, sat: false, uns: false, dbl: false,
                 h: true, style: 'stick', spin: false };
   var viewer = $3Dmol.createViewer('viewer', { backgroundColor: '#1c2128' });
 
@@ -94,12 +98,16 @@
     if (state.uns) viewer.setStyle({ serial: G.uns }, mk(0.18, 0.28, COL.uns));
     if (state.dbl) viewer.setStyle({ serial: G.dbl }, withBall(mk(0.26, 0.42, COL.dbl), 0.42, COL.dbl));
     if (state.cho) viewer.setStyle({ serial: G.cho }, mk(0.2, 0.3, COL.cho));
+    if (state.est) {
+      viewer.setStyle({ serial: G.est }, mk(0.2, 0.3));              // couleurs par élément, atomes épaissis
+      viewer.setStyle({ serial: G.estC }, mk(0.2, 0.3, COL.est));    // carbones carbonyles en bleu
+    }
     if (state.gly) viewer.setStyle({ serial: G.gly }, withBall(mk(0.24, 0.42, COL.gly), 0.42, COL.gly));
     if (state.pho) viewer.setStyle({ serial: G.pho }, withBall(mk(0.22, 0.34), 0.34, '#ff8000'));
     if (!state.h) viewer.setStyle({ elem: 'H' }, {});
     viewer.render();
 
-    ['gly', 'pho', 'cho', 'sat', 'uns', 'dbl'].forEach(function (k) {
+    ['gly', 'est', 'pho', 'cho', 'sat', 'uns', 'dbl'].forEach(function (k) {
       document.getElementById('l' + k.charAt(0).toUpperCase() + k.slice(1)).style.display = state[k] ? 'inline' : 'none';
     });
   }
@@ -113,6 +121,7 @@
     });
   }
   toggle('bGly', 'gly');
+  toggle('bEst', 'est');
   toggle('bPho', 'pho');
   toggle('bCho', 'cho');
   toggle('bSat', 'sat');
