@@ -76,6 +76,26 @@
   .pdf-link { display: inline-flex; align-items: center; gap: 6px; background: var(--or); color: var(--bleu-fonce); font-weight: bold; padding: 7px 14px; border-radius: 4px; text-decoration: none; font-size: .85rem; margin-bottom: 12px; transition: background .2s; }
   .pdf-link:hover { background: var(--bleu-clair); }
 
+  /* RECHERCHE PLEIN TEXTE */
+  .recherche { background: var(--blanc); border-radius: 6px; padding: 18px 28px; margin: 20px 0 10px; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  .recherche h3 { font-size: 1.1rem; color: var(--bleu-fonce); margin-bottom: 6px; }
+  .recherche p.aide { font-size: .85rem; color: #666; margin-bottom: 10px; }
+  .recherche form { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+  .recherche input[type=search] { flex: 1 1 280px; font: inherit; padding: 8px 12px; border: 2px solid var(--bleu-clair); border-radius: 4px; }
+  .recherche input[type=search]:focus { outline: none; border-color: var(--bleu-moyen); }
+  .recherche button { font: inherit; font-weight: bold; font-size: .9rem; background: var(--or); color: var(--bleu-fonce); border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; }
+  .recherche button:hover { background: var(--bleu-clair); }
+  .recherche label { font-size: .88rem; white-space: nowrap; }
+  #rech-etat { font-size: .88rem; color: var(--bleu-moyen); margin-top: 10px; }
+  #rech-resultats { list-style: none; margin-top: 8px; }
+  #rech-resultats li { border-top: 1px solid #e3e9ee; padding: 10px 0; }
+  #rech-resultats .titre { font-weight: bold; color: var(--bleu-fonce); }
+  #rech-resultats .titre a { color: var(--bleu-moyen); text-decoration: none; }
+  #rech-resultats .titre a:hover { color: var(--or); text-decoration: underline; }
+  #rech-resultats .meta { font-size: .8rem; color: #777; }
+  #rech-resultats .extrait { font-size: .85rem; color: #444; margin-top: 4px; }
+  #rech-resultats mark { background: #fde3a7; padding: 0 1px; }
+
   /* DIVIDER */
   .divider { border: none; border-top: 3px solid var(--bleu-fonce); margin: 36px 0 20px; opacity: .2; }
 
@@ -121,6 +141,19 @@
       <a href="#analyse-documents">↓ Sujets d'analyse de documents</a>
     </div>
   </div>
+
+  <section class="recherche" id="recherche">
+    <h3>Rechercher dans le texte des sujets et rapports</h3>
+    <p class="aide">Plusieurs mots : tous doivent figurer dans le document. Expression exacte entre guillemets, par exemple <em>"flux de chaleur" géotherme</em>. Une racine suffit : <em>conducti</em> trouve conductivité, conduction… Accents et majuscules ignorés. Texte issu de la reconnaissance de caractères d'archive.org, donc parfois imparfait.</p>
+    <form id="rech-form">
+      <input type="search" id="rech-q" placeholder="ex. : &quot;flux de chaleur&quot;" aria-label="Termes recherchés">
+      <button type="submit">Rechercher</button>
+      <label><input type="checkbox" id="rech-sujets" checked> Sujets</label>
+      <label><input type="checkbox" id="rech-rapports"> Rapports de jury</label>
+    </form>
+    <div id="rech-etat" aria-live="polite"></div>
+    <ul id="rech-resultats"></ul>
+  </section>
 
   <!-- ═══════════════════════════════════════
        SECTION 1 — SYNTHÈSE ORAL
@@ -680,6 +713,108 @@
     header.classList.toggle('open', !isOpen);
     body.classList.toggle('open', !isOpen);
   }
+
+  /* Recherche plein texte : index-sujets.js et index-rapports.js sont produits par build_index.py
+     et n'est chargé qu'à la première recherche. */
+  (function () {
+    const form = document.getElementById('rech-form');
+    const champ = document.getElementById('rech-q');
+    const etat = document.getElementById('rech-etat');
+    const liste = document.getElementById('rech-resultats');
+    const index = {};  // { sujets: [...], rapports: [...] }, rempli à la demande
+
+    // Minuscules sans accents, en gardant la même longueur que le texte
+    // d'origine pour pouvoir y découper les extraits.
+    function normaliser(s) {
+      const n = s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+      if (n.length === s.length) return n;
+      let r = '';
+      for (const c of s) {
+        const m = c.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+        r += m.length === c.length ? m : ' '.repeat(c.length);
+      }
+      return r;
+    }
+
+    function echapper(s) {
+      return s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    }
+
+    function termes(q) {
+      const t = [];
+      q.replace(/"([^"]+)"|(\S+)/g, (_, phrase, mot) => { t.push(normaliser((phrase || mot).trim())); });
+      return t.filter(Boolean);
+    }
+
+    function compter(texte, terme) {
+      let n = 0, i = texte.indexOf(terme);
+      while (i !== -1) { n++; i = texte.indexOf(terme, i + terme.length); }
+      return n;
+    }
+
+    function extraits(doc, ts) {
+      const morceaux = [];
+      let i = -1;
+      while (morceaux.length < 3 && (i = doc.n.indexOf(ts[0], i + 1)) !== -1) {
+        const deb = Math.max(0, i - 90), fin = Math.min(doc.x.length, i + ts[0].length + 90);
+        let html = '';
+        let pos = deb;
+        const re = new RegExp(ts.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+        for (const m of doc.n.slice(deb, fin).matchAll(re)) {
+          html += echapper(doc.x.slice(pos, deb + m.index)) + '<mark>' + echapper(doc.x.substr(deb + m.index, m[0].length)) + '</mark>';
+          pos = deb + m.index + m[0].length;
+        }
+        html += echapper(doc.x.slice(pos, fin));
+        morceaux.push((deb > 0 ? '… ' : '') + html + (fin < doc.x.length ? ' …' : ''));
+        i = fin;
+      }
+      return morceaux;
+    }
+
+    async function charger(type) {
+      if (index[type]) return index[type];
+      etat.textContent = 'Chargement de l’index des ' + type + ' (une seule fois' +
+        (type === 'rapports' ? ', environ 6 Mo' : ', environ 1 Mo') + ')…';
+      // Chargé par une balise <script> plutôt que fetch : fonctionne aussi en file://
+      await new Promise((ok, echec) => {
+        const s = document.createElement('script');
+        s.src = 'index-' + type + '.js';
+        s.onload = ok;
+        s.onerror = () => echec(new Error('index-' + type + '.js introuvable'));
+        document.head.appendChild(s);
+      });
+      const docs = window.indexRecherche[type].docs;
+      for (const d of docs) d.n = normaliser(d.x);
+      return index[type] = docs;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ts = termes(champ.value);
+      liste.innerHTML = '';
+      if (!ts.length) { etat.textContent = ''; return; }
+      const types = ['sujets', 'rapports'].filter(t => document.getElementById('rech-' + t).checked);
+      if (!types.length) { etat.textContent = 'Cochez « Sujets » et/ou « Rapports ».'; return; }
+      let docs = [];
+      try {
+        for (const t of types) docs = docs.concat(await charger(t));
+      } catch (err) { etat.textContent = 'Erreur : ' + err.message; return; }
+      const trouves = [];
+      for (const d of docs) {
+        const nb = ts.map(t => compter(d.n, t));
+        if (nb.every(Boolean)) trouves.push({ d, score: nb.reduce((a, b) => a + b, 0) });
+      }
+      trouves.sort((a, b) => b.score - a.score);
+      const sansTexte = docs.filter(d => !d.x).length;
+      etat.textContent = trouves.length + ' document(s) trouvé(s)' + (trouves.length > 50 ? ', 50 premiers affichés' : '') +
+        (sansTexte ? ' (' + sansTexte + ' PDF sans texte exploitable ne sont pas cherchables)' : '') + '.';
+      liste.innerHTML = trouves.slice(0, 50).map(({ d, score }) =>
+        '<li><div class="titre"><a href="' + echapper(d.u) + '" target="_blank" rel="noopener">' + echapper(/^(sujet|rapport)/i.test(d.k) ? d.k : (d.u.includes('/Rapports-') ? 'Rapport ' : 'Sujet ') + d.k) + '</a> – ' + echapper(d.t) + '</div>' +
+        '<div class="meta">' + echapper(d.g ? d.g + ' · ' : '') + echapper(d.s) + ' · ' + score + ' occurrence(s)</div>' +
+        extraits(d, ts).map(x => '<div class="extrait">' + x + '</div>').join('') + '</li>'
+      ).join('');
+    });
+  })();
 </script>
 </body>
 </html>
