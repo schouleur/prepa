@@ -118,9 +118,6 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
 <input type="file" id="fichier" accept=".json,application/json" class="cache">
 
 <script>
-// Remplacé par generer_saisie.py pour produire une page autonome.
-const DONNEES_INTEGREES = null;
-
 let ds = null;        // barème : questions, élèves, notes d'origine (issues de l'ods)
 let notes = {};       // notes saisies : { eleve: { ligne: 0..3 } }
 let dernierExport = 0;
@@ -308,13 +305,23 @@ $("fichier").addEventListener("change", ev => {
   ev.target.value = "";
 });
 
-const donnees = DONNEES_INTEGREES || lireStock("saisie:courant", null);
+const donnees = lireStock("saisie:courant", null);
 if (donnees) charger(donnees); else $("accueil").classList.remove("cache");
 
 // version en ligne : fonctionnement hors connexion une fois la page ajoutée à l'écran d'accueil
-if (location.protocol.startsWith("http") && "serviceWorker" in navigator && !DONNEES_INTEGREES) {
+if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
 }
+
+// écran maintenu allumé pendant la saisie (iOS 18.4+) ; Safari exige un premier appui,
+// et le verrou tombe quand on quitte l'appli : on le redemande au retour
+let verrouEcran = null;
+async function garderEcranAllume() {
+  if (!("wakeLock" in navigator) || document.visibilityState !== "visible" || (verrouEcran && !verrouEcran.released)) return;
+  try { verrouEcran = await navigator.wakeLock.request("screen"); } catch (e) { /* non pris en charge : sans effet */ }
+}
+document.addEventListener("pointerdown", garderEcranAllume);
+document.addEventListener("visibilitychange", garderEcranAllume);
 </script>
 </body>
 </html>
