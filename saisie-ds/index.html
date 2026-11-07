@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Saisie DS">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Saisie DS</title>
+<style>
+:root {
+  --fond: #f4f3ef; --carte: #ffffff; --texte: #1d1d1b; --doux: #6b6a65; --trait: #dddbd3;
+  --accent: #2f5d8a; --accent-texte: #ffffff; --choisi: #f2c94c; --choisi-texte: #1d1d1b; --ok: #3d8b5a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #161615; --carte: #22221f; --texte: #ecebe6; --doux: #a09f98; --trait: #3a3935;
+    --accent: #6a9fd0; --accent-texte: #101010; --choisi: #e0b53a; --choisi-texte: #161615; --ok: #6cc08b;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--texte);
+  font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%; }
+header { position: sticky; top: 0; z-index: 5; background: var(--fond);
+  padding: calc(env(safe-area-inset-top) + 8px) 12px 8px; border-bottom: 1px solid var(--trait); }
+.ligne { display: flex; gap: 8px; align-items: center; }
+select, button { font: inherit; color: inherit; }
+select { flex: 1; min-width: 0; padding: 10px; border-radius: 10px; border: 1px solid var(--trait);
+  background: var(--carte); font-size: 17px; }
+.nav { width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--trait); background: var(--carte); font-size: 20px; }
+.etat { display: flex; justify-content: space-between; margin-top: 6px; font-size: 14px; color: var(--doux); }
+.etat b { color: var(--texte); font-size: 18px; }
+main { padding: 12px 12px 120px; max-width: 720px; margin: 0 auto; }
+h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--doux); margin: 22px 4px 8px; }
+.q { background: var(--carte); border: 1px solid var(--trait); border-radius: 14px; padding: 12px; margin-bottom: 10px; }
+.q.vide { border-left: 4px solid var(--accent); }
+.titre { display: flex; justify-content: space-between; gap: 8px; font-weight: 600; }
+.coeff { color: var(--doux); font-weight: 400; font-size: 13px; white-space: nowrap; }
+.intitule { color: var(--doux); font-size: 14px; margin-top: 2px; white-space: pre-wrap;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.q.ouverte .intitule { -webkit-line-clamp: unset; }
+.reponse { display: none; white-space: pre-wrap; font-size: 14px; margin-top: 8px; padding: 8px;
+  background: var(--fond); border-radius: 8px; }
+.q.ouverte .reponse { display: block; }
+.voir { background: none; border: 0; color: var(--accent); padding: 4px 0; font-size: 14px; }
+.niveaux { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; }
+.niv { min-height: 64px; border-radius: 10px; border: 1px solid var(--trait); background: var(--fond);
+  padding: 6px 4px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+.niv .n { font-size: 22px; font-weight: 700; }
+.niv .c { font-size: 11px; line-height: 1.2; color: var(--doux); text-align: center; overflow-wrap: anywhere; }
+.niv.choisi { background: var(--choisi); border-color: var(--choisi); color: var(--choisi-texte); }
+.niv:disabled { opacity: .55; }
+.niv.choisi:disabled { opacity: 1; }
+.niv.choisi .c { color: var(--choisi-texte); }
+footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--fond); border-top: 1px solid var(--trait);
+  padding: 8px 12px calc(env(safe-area-inset-bottom) + 8px); display: flex; gap: 8px; }
+footer button, .gros { flex: 1; padding: 12px; border-radius: 10px; border: 0; background: var(--accent);
+  color: var(--accent-texte); font-weight: 600; }
+footer button.second { background: var(--carte); color: var(--texte); border: 1px solid var(--trait); }
+.accueil { text-align: center; padding: 40px 16px; }
+.accueil p { color: var(--doux); }
+dialog { border: 0; border-radius: 14px; background: var(--carte); color: var(--texte); width: min(92vw, 520px); padding: 16px; }
+dialog::backdrop { background: rgba(0,0,0,.4); }
+dialog textarea { width: 100%; height: 140px; font: 12px monospace; }
+dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
+.rappel { background: var(--choisi); color: var(--choisi-texte); border-radius: 10px; padding: 8px 12px; margin: 8px 0 0; font-size: 14px; }
+.cache { display: none !important; }
+</style>
+</head>
+<body>
+
+<div id="accueil" class="accueil cache">
+  <h1>Saisie DS</h1>
+  <p>Charge le fichier <code>DSx-donnees.json</code> produit par <code>generer_saisie.py</code>.</p>
+  <button class="gros" onclick="choisirFichier()">Charger un DS…</button>
+</div>
+
+<div id="appli" class="cache">
+  <header>
+    <div class="ligne">
+      <button class="nav" onclick="decaler(-1)" aria-label="Élève précédent">‹</button>
+      <select id="eleve" onchange="afficher()"></select>
+      <button class="nav" onclick="decaler(1)" aria-label="Élève suivant">›</button>
+    </div>
+    <div class="etat"><span id="progression"></span><span>Note : <b id="note"></b> / 20</span></div>
+    <div id="rappel" class="rappel cache"></div>
+  </header>
+  <main id="questions"></main>
+  <footer>
+    <button class="second" onclick="document.getElementById('menu').showModal()">Menu</button>
+    <button onclick="exporter()">Exporter les notes</button>
+  </footer>
+</div>
+
+<dialog id="menu">
+  <h3 id="menuTitre"></h3>
+  <div class="ligne" style="flex-direction:column;align-items:stretch">
+    <button class="gros" onclick="exporter()">Exporter les notes modifiées</button>
+    <button class="gros" onclick="choisirFichier()">Charger un autre DS (ou une mise à jour)…</button>
+    <button class="gros" style="background:#a33" onclick="effacerEleve()">Effacer les notes de cet élève</button>
+    <button class="gros second" style="background:var(--carte);color:var(--texte);border:1px solid var(--trait)" onclick="this.closest('dialog').close()">Fermer</button>
+  </div>
+</dialog>
+
+<dialog id="export">
+  <h3>Export</h3>
+  <p id="exportInfo"></p>
+  <textarea id="exportTexte" readonly></textarea>
+  <div class="ligne">
+    <button class="gros" id="btnPartager" onclick="partager()">Partager / enregistrer</button>
+    <button class="gros" onclick="copier()">Copier</button>
+    <button class="gros" style="background:var(--carte);color:var(--texte);border:1px solid var(--trait)" onclick="this.closest('dialog').close()">Fermer</button>
+  </div>
+</dialog>
+
+<input type="file" id="fichier" accept=".json,application/json" class="cache">
+
+<script>
+// Remplacé par generer_saisie.py pour produire une page autonome.
+const DONNEES_INTEGREES = null;
+
+let ds = null;        // barème : questions, élèves, notes d'origine (issues de l'ods)
+let notes = {};       // notes saisies : { eleve: { ligne: 0..3 } }
+let dernierExport = 0;
+
+const $ = id => document.getElementById(id);
+function lireStock(cle, defaut) {
+  try { const v = localStorage.getItem(cle); return v ? JSON.parse(v) : defaut; } catch (e) { return defaut; }
+}
+function ecrireStock(cle, valeur) {
+  try { localStorage.setItem(cle, JSON.stringify(valeur)); } catch (e) { alert("Enregistrement impossible sur cet appareil : pense à exporter."); }
+}
+const cleDS = () => "saisie:" + ds.titre;
+
+function charger(donnees) {
+  ds = donnees;
+  const stock = lireStock(cleDS(), { notes: {}, dernierExport: 0 });
+  // une copie déjà commencée dans l'ods est verrouillée : l'ods prime sur le téléphone
+  notes = {};
+  for (const [e, v] of Object.entries(stock.notes)) if (!verrouille(e)) notes[e] = { ...v };
+  for (const [e, v] of Object.entries(ds.notes || {})) notes[e] = { ...v };
+  dernierExport = stock.dernierExport || 0;
+  ecrireStock("saisie:courant", ds);
+  sauver();
+  $("accueil").classList.add("cache");
+  $("appli").classList.remove("cache");
+  $("menuTitre").textContent = ds.titre;
+  document.title = ds.titre;
+  const sel = $("eleve");
+  sel.innerHTML = ds.eleves.map(e => `<option value="${e}">${e}</option>`).join("");
+  sel.value = lireStock("saisie:eleve:" + ds.titre, ds.eleves[0]) || ds.eleves[0];
+  afficher();
+}
+
+function sauver() {
+  // on ne stocke que les copies saisies sur le téléphone (les copies verrouillées viennent de l'ods)
+  const diff = modifications();
+  ecrireStock(cleDS(), { notes: diff, dernierExport });
+}
+
+const verrouille = e => (ds.notes || {})[e] !== undefined;
+
+function modifications() {
+  const diff = {};
+  for (const [e, v] of Object.entries(notes)) {
+    if (verrouille(e) || !Object.keys(v).length) continue;
+    diff[e] = { ...v };
+  }
+  return diff;
+}
+
+function noteSur20(e) {
+  let pts = 0, tot = 0;
+  for (const q of ds.questions) { tot += q.coeff; pts += ((notes[e] || {})[q.ligne] || 0) * q.coeff / 3; }
+  return tot ? Math.round(pts / tot * 20 * 2) / 2 : 0;   // comme MROUND(…;0,5)
+}
+const nbSaisies = e => ds.questions.filter(q => (notes[e] || {})[q.ligne] !== undefined).length;
+
+function libelles() {
+  const sel = $("eleve");
+  for (const o of sel.options) {
+    const n = nbSaisies(o.value);
+    o.textContent = (n === ds.questions.length ? "✓ " : n ? "… " : "") + o.value;
+  }
+}
+
+function echapper(t) { return t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function afficher() {
+  const e = $("eleve").value;
+  ecrireStock("saisie:eleve:" + ds.titre, e);
+  const n = notes[e] || {};
+  const bloque = verrouille(e);
+  let html = bloque ? `<p class="rappel">Copie déjà saisie dans l'ODS : consultation seule. Les corrections se font sur l'ordinateur.</p>` : "";
+  let partie = null;
+  for (const q of ds.questions) {
+    if (q.partie !== partie) { partie = q.partie; html += `<h2>${echapper(partie)}</h2>`; }
+    const v = n[q.ligne];
+    html += `<section class="q${v === undefined ? " vide" : ""}" data-ligne="${q.ligne}">
+      <div class="titre"><span>${echapper(q.numero || "")}</span><span class="coeff">coeff ${q.coeff}</span></div>
+      ${q.intitule ? `<div class="intitule">${echapper(q.intitule)}</div>` : ""}
+      ${q.reponse ? `<button class="voir" onclick="this.closest('.q').classList.toggle('ouverte')">Réponse attendue</button>
+      <div class="reponse">${echapper(q.reponse)}</div>` : ""}
+      <div class="niveaux">${[0, 1, 2, 3].map(k => `<button class="niv${v === k ? " choisi" : ""}"${bloque ? " disabled" : ""} onclick="noter(${q.ligne},${k})">
+        <span class="n">${k}</span><span class="c">${k && q.niveaux[k] !== String(k) ? echapper(q.niveaux[k]) : ""}</span></button>`).join("")}</div>
+    </section>`;
+  }
+  $("questions").innerHTML = html;
+  majEtat();
+  window.scrollTo(0, 0);
+}
+
+function majEtat() {
+  const e = $("eleve").value;
+  $("note").textContent = String(noteSur20(e)).replace(".", ",");
+  $("progression").textContent = `${nbSaisies(e)} / ${ds.questions.length} questions`;
+  libelles();
+  const nbModifs = Object.keys(modifications()).length;
+  const jours = (Date.now() - dernierExport) / 864e5;
+  const r = $("rappel");
+  if (nbModifs && (jours > 1 || nbModifs >= 5)) {
+    r.textContent = `${nbModifs} copie(s) modifiée(s) non exportée(s) : pense à exporter.`;
+    r.classList.remove("cache");
+  } else r.classList.add("cache");
+}
+
+function noter(ligne, k) {
+  const e = $("eleve").value;
+  if (verrouille(e)) return;
+  (notes[e] ||= {});
+  if (notes[e][ligne] === k) delete notes[e][ligne]; else notes[e][ligne] = k;   // 2e appui = annuler
+  sauver();
+  const sec = document.querySelector(`.q[data-ligne="${ligne}"]`);
+  sec.classList.toggle("vide", notes[e][ligne] === undefined);
+  sec.querySelectorAll(".niv").forEach((b, i) => b.classList.toggle("choisi", notes[e][ligne] === i));
+  majEtat();
+}
+
+function decaler(d) {
+  const sel = $("eleve");
+  sel.selectedIndex = (sel.selectedIndex + d + sel.options.length) % sel.options.length;
+  afficher();
+}
+
+function effacerEleve() {
+  const e = $("eleve").value;
+  if (verrouille(e)) { alert("Copie déjà saisie dans l'ODS : à corriger sur l'ordinateur."); return; }
+  if (!confirm(`Effacer toutes les notes saisies pour ${e} ?`)) return;
+  notes[e] = {};
+  sauver(); $("menu").close(); afficher();
+}
+
+function texteExport() {
+  return JSON.stringify({ titre: ds.titre, fichier: ds.fichier, date: new Date().toISOString(), notes: modifications() }, null, 1);
+}
+
+function exporter() {
+  $("menu").close();
+  const diff = modifications();
+  const n = Object.keys(diff).length;
+  $("exportInfo").textContent = n
+    ? `${n} copie(s) modifiée(s) depuis la génération du fichier. Enregistre ce fichier (Fichiers, iCloud, mail…) puis lance importer_notes.py sur l'ordinateur.`
+    : "Aucune modification depuis la génération du fichier.";
+  $("exportTexte").value = texteExport();
+  $("export").showModal();
+}
+
+function nomExport() {
+  const d = new Date(), z = x => String(x).padStart(2, "0");
+  return `${(ds.fichier || "DS").replace(/-bareme\.ods$|\.ods$/, "")}-notes-${d.getFullYear()}${z(d.getMonth() + 1)}${z(d.getDate())}-${z(d.getHours())}${z(d.getMinutes())}.json`;
+}
+
+async function partager() {
+  const texte = texteExport();
+  const fichier = new File([texte], nomExport(), { type: "application/json" });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [fichier] })) {
+      await navigator.share({ files: [fichier], title: nomExport() });
+    } else {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(fichier); a.download = fichier.name;
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+    dernierExport = Date.now(); sauver(); majEtat();
+  } catch (err) {
+    if (err.name !== "AbortError") alert("Partage impossible ; utilise « Copier ».");
+  }
+}
+
+async function copier() {
+  const t = $("exportTexte");
+  try { await navigator.clipboard.writeText(t.value); } catch (e) { t.select(); document.execCommand("copy"); }
+  dernierExport = Date.now(); sauver(); majEtat();
+  alert("Copié : colle-le dans un mail ou une note, puis enregistre-le en .json sur l'ordinateur.");
+}
+
+function choisirFichier() { $("menu").close(); $("fichier").click(); }
+$("fichier").addEventListener("change", ev => {
+  const f = ev.target.files[0];
+  if (!f) return;
+  f.text().then(t => {
+    const d = JSON.parse(t);
+    if (!d.questions || !d.eleves) throw new Error();
+    charger(d);
+  }).catch(() => alert("Ce fichier n'est pas un fichier de données de DS."));
+  ev.target.value = "";
+});
+
+const donnees = DONNEES_INTEGREES || lireStock("saisie:courant", null);
+if (donnees) charger(donnees); else $("accueil").classList.remove("cache");
+
+// version en ligne : fonctionnement hors connexion une fois la page ajoutée à l'écran d'accueil
+if (location.protocol.startsWith("http") && "serviceWorker" in navigator && !DONNEES_INTEGREES) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+</script>
+</body>
+</html>

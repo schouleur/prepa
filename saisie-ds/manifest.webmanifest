@@ -1,0 +1,9 @@
+{
+  "name": "Saisie DS",
+  "short_name": "Saisie DS",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f3ef",
+  "theme_color": "#2f5d8a"
+}
