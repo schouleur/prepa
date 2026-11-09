@@ -66,6 +66,9 @@ dialog::backdrop { background: rgba(0,0,0,.4); }
 dialog textarea { width: 100%; height: 140px; font: 16px monospace; }
 dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
 .rappel { background: var(--choisi); color: var(--choisi-texte); border-radius: 10px; padding: 8px 12px; margin: 8px 0 0; font-size: 14px; }
+.zeros { display: block; margin: 16px auto 0; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--trait);
+  background: var(--carte); color: var(--doux); font-size: 14px; }
+#ecran { font-size: 12px; }
 .cache { display: none !important; }
 </style>
 </head>
@@ -84,7 +87,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
       <select id="eleve" onchange="afficher()"></select>
       <button class="nav" onclick="decaler(1)" aria-label="Élève suivant">›</button>
     </div>
-    <div class="etat"><span id="progression"></span><span>Note : <b id="note"></b> / 20</span></div>
+    <div class="etat"><span id="progression"></span><span id="ecran"></span><span>Note : <b id="note"></b> / 20</span></div>
     <div id="rappel" class="rappel cache"></div>
   </header>
   <main id="questions"></main>
@@ -121,6 +124,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
 let ds = null;        // barème : questions, élèves, notes d'origine (issues de l'ods)
 let notes = {};       // notes saisies : { eleve: { ligne: 0..3 } }
 let dernierExport = 0;
+let exporte = {};     // dernier état exporté de chaque copie, pour savoir ce qui reste à exporter
 
 const $ = id => document.getElementById(id);
 function lireStock(cle, defaut) {
@@ -139,6 +143,7 @@ function charger(donnees) {
   for (const [e, v] of Object.entries(stock.notes)) if (!verrouille(e)) notes[e] = { ...v };
   for (const [e, v] of Object.entries(ds.notes || {})) notes[e] = { ...v };
   dernierExport = stock.dernierExport || 0;
+  exporte = stock.exporte || {};
   ecrireStock("saisie:courant", ds);
   sauver();
   $("accueil").classList.add("cache");
@@ -154,7 +159,7 @@ function charger(donnees) {
 function sauver() {
   // on ne stocke que les copies saisies sur le téléphone (les copies verrouillées viennent de l'ods)
   const diff = modifications();
-  ecrireStock(cleDS(), { notes: diff, dernierExport });
+  ecrireStock(cleDS(), { notes: diff, dernierExport, exporte });
 }
 
 const verrouille = e => (ds.notes || {})[e] !== undefined;
@@ -166,6 +171,18 @@ function modifications() {
     diff[e] = { ...v };
   }
   return diff;
+}
+
+function nonExportees() {
+  return Object.entries(modifications()).filter(([e, v]) => exporte[e] !== JSON.stringify(v)).map(([e]) => e);
+}
+
+function marquerExporte() {
+  dernierExport = Date.now();
+  exporte = {};
+  for (const [e, v] of Object.entries(modifications())) exporte[e] = JSON.stringify(v);
+  sauver(); majEtat();
+  $("export").close();
 }
 
 function noteSur20(e) {
@@ -204,6 +221,8 @@ function afficher() {
         <span class="n">${k}</span><span class="c">${k && q.niveaux[k] !== String(k) ? echapper(q.niveaux[k]) : ""}</span></button>`).join("")}</div>
     </section>`;
   }
+  const restantes = ds.questions.length - nbSaisies(e);
+  if (!bloque && restantes) html += `<button class="zeros" onclick="zerosRestants()">Mettre 0 aux ${restantes} question(s) non traitée(s)</button>`;
   $("questions").innerHTML = html;
   majEtat();
   window.scrollTo(0, 0);
@@ -214,11 +233,11 @@ function majEtat() {
   $("note").textContent = String(noteSur20(e)).replace(".", ",");
   $("progression").textContent = `${nbSaisies(e)} / ${ds.questions.length} questions`;
   libelles();
-  const nbModifs = Object.keys(modifications()).length;
+  const nb = nonExportees().length;
   const jours = (Date.now() - dernierExport) / 864e5;
   const r = $("rappel");
-  if (nbModifs && (jours > 1 || nbModifs >= 5)) {
-    r.textContent = `${nbModifs} copie(s) modifiée(s) non exportée(s) : pense à exporter.`;
+  if (nb >= 5 || (nb && dernierExport && jours > 1)) {
+    r.textContent = `${nb} copie(s) modifiée(s) depuis le dernier export : pense à exporter.`;
     r.classList.remove("cache");
   } else r.classList.add("cache");
 }
@@ -233,6 +252,17 @@ function noter(ligne, k) {
   sec.classList.toggle("vide", notes[e][ligne] === undefined);
   sec.querySelectorAll(".niv").forEach((b, i) => b.classList.toggle("choisi", notes[e][ligne] === i));
   majEtat();
+}
+
+function zerosRestants() {
+  const e = $("eleve").value;
+  if (verrouille(e)) return;
+  const restantes = ds.questions.filter(q => (notes[e] || {})[q.ligne] === undefined);
+  if (!confirm(`Mettre 0 aux ${restantes.length} question(s) non traitée(s) de ${e} ?`)) return;
+  (notes[e] ||= {});
+  for (const q of restantes) notes[e][q.ligne] = 0;
+  sauver();
+  const y = window.scrollY; afficher(); window.scrollTo(0, y);
 }
 
 function decaler(d) {
@@ -255,11 +285,10 @@ function texteExport() {
 
 function exporter() {
   $("menu").close();
-  const diff = modifications();
-  const n = Object.keys(diff).length;
+  const n = Object.keys(modifications()).length, nouv = nonExportees().length;
   $("exportInfo").textContent = n
-    ? `${n} copie(s) modifiée(s) depuis la génération du fichier. Enregistre ce fichier (Fichiers, iCloud, mail…) puis lance importer_notes.py sur l'ordinateur.`
-    : "Aucune modification depuis la génération du fichier.";
+    ? `${n} copie(s) saisie(s) sur cet appareil, dont ${nouv} modifiée(s) depuis le dernier export. Enregistre ce fichier (Fichiers, iCloud, mail…) puis lance importer_notes.py sur l'ordinateur.`
+    : "Aucune copie saisie sur cet appareil.";
   $("exportTexte").value = texteExport();
   $("export").showModal();
 }
@@ -280,7 +309,7 @@ async function partager() {
       a.href = URL.createObjectURL(fichier); a.download = fichier.name;
       document.body.appendChild(a); a.click(); a.remove();
     }
-    dernierExport = Date.now(); sauver(); majEtat();
+    marquerExporte();
   } catch (err) {
     if (err.name !== "AbortError") alert("Partage impossible ; utilise « Copier ».");
   }
@@ -289,8 +318,8 @@ async function partager() {
 async function copier() {
   const t = $("exportTexte");
   try { await navigator.clipboard.writeText(t.value); } catch (e) { t.select(); document.execCommand("copy"); }
-  dernierExport = Date.now(); sauver(); majEtat();
   alert("Copié : colle-le dans un mail ou une note, puis enregistre-le en .json sur l'ordinateur.");
+  marquerExporte();
 }
 
 function choisirFichier() { $("menu").close(); $("fichier").click(); }
@@ -313,15 +342,28 @@ if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
 }
 
-// écran maintenu allumé pendant la saisie (iOS 18.4+) ; Safari exige un premier appui,
-// et le verrou tombe quand on quitte l'appli : on le redemande au retour
-let verrouEcran = null;
+// écran maintenu allumé pendant la saisie (iOS 18.4+). Safari exige un appui pour l'accorder, le retire
+// quand on quitte l'appli, et peut le rendre inopérant sans le signaler : on le renouvelle donc au fil
+// des appuis (au plus une fois par minute)
+let verrouEcran = null, verrouDepuis = 0;
+function etatEcran(texte) { $("ecran").textContent = texte; }
 async function garderEcranAllume() {
-  if (!("wakeLock" in navigator) || document.visibilityState !== "visible" || (verrouEcran && !verrouEcran.released)) return;
-  try { verrouEcran = await navigator.wakeLock.request("screen"); } catch (e) { /* non pris en charge : sans effet */ }
+  if (!("wakeLock" in navigator)) return etatEcran("");
+  if (document.visibilityState !== "visible") return;
+  if (verrouEcran && !verrouEcran.released && Date.now() - verrouDepuis < 60000) return;
+  try {
+    const nouveau = await navigator.wakeLock.request("screen");
+    const ancien = verrouEcran;
+    verrouEcran = nouveau; verrouDepuis = Date.now();
+    nouveau.addEventListener("release", () => { if (verrouEcran === nouveau) etatEcran("☾ veille possible"); });
+    if (ancien && !ancien.released) ancien.release();
+    etatEcran("☀ écran allumé");
+  } catch (e) {
+    etatEcran("☾ veille possible");
+  }
 }
 document.addEventListener("pointerdown", garderEcranAllume);
-document.addEventListener("visibilitychange", garderEcranAllume);
+document.addEventListener("visibilitychange", () => { verrouDepuis = 0; garderEcranAllume(); });
 </script>
 </body>
 </html>
