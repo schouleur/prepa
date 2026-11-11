@@ -68,8 +68,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
 .rappel { background: var(--choisi); color: var(--choisi-texte); border-radius: 10px; padding: 8px 12px; margin: 8px 0 0; font-size: 14px; }
 .zeros { display: block; margin: 16px auto 0; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--trait);
   background: var(--carte); color: var(--doux); font-size: 14px; }
-#ecran { font-size: 12px; }
-#compteur { font-size: 12px; color: var(--doux); margin-top: 2px; }
+#infos p { margin: 6px 0; }
 .cache { display: none !important; }
 </style>
 </head>
@@ -88,14 +87,14 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
       <select id="eleve" onchange="afficher()"></select>
       <button class="nav" onclick="decaler(1)" aria-label="Élève suivant">›</button>
     </div>
-    <div class="etat"><span id="progression"></span><span id="ecran"></span><span>Note : <b id="note"></b> / 20</span></div>
-    <div id="compteur"></div>
+    <div class="etat"><span id="progression"></span><span>Note : <b id="note"></b> / 20</span></div>
     <div id="rappel" class="rappel cache"></div>
   </header>
   <main id="questions"></main>
   <footer>
     <button class="second" onclick="document.getElementById('menu').showModal()">Menu</button>
-    <button onclick="exporter()">Exporter les notes</button>
+    <button class="second" onclick="document.getElementById('infos').showModal()">Infos</button>
+    <button onclick="exporter()">Exporter</button>
   </footer>
 </div>
 
@@ -106,6 +105,15 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
     <button class="gros" onclick="choisirFichier()">Charger un autre DS (ou une mise à jour)…</button>
     <button class="gros" style="background:#a33" onclick="effacerEleve()">Effacer les notes de cet élève</button>
     <button class="gros second" style="background:var(--carte);color:var(--texte);border:1px solid var(--trait)" onclick="this.closest('dialog').close()">Fermer</button>
+  </div>
+</dialog>
+
+<dialog id="infos">
+  <h3>Infos</h3>
+  <p id="compteur"></p>
+  <p>Écran : <span id="ecran">pas encore demandé (touche la page)</span></p>
+  <div class="ligne">
+    <button class="gros" style="background:var(--carte);color:var(--texte);border:1px solid var(--trait)" onclick="this.closest('dialog').close()">Fermer</button>
   </div>
 </dialog>
 
@@ -242,8 +250,8 @@ function majEtat() {
   const importees = ds.eleves.filter(verrouille).length;
   const ici = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) === ds.questions.length).length;
   const enCours = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) && nbSaisies(x) < ds.questions.length).length;
-  $("compteur").textContent = `Copies : ${importees} importée(s) dans Calc · ${ici} corrigée(s) ici`
-    + (enCours ? ` · ${enCours} en cours` : "") + ` · ${ds.eleves.length} au total`;
+  $("compteur").innerHTML = `Copies importées dans Calc : <b>${importees}</b><br>Copies corrigées sur cet appareil : <b>${ici}</b>`
+    + (enCours ? `<br>Copies en cours : <b>${enCours}</b>` : "") + `<br>Total : ${ds.eleves.length} élèves`;
   libelles();
   const nb = nonExportees().length;
   const jours = (Date.now() - dernierExport) / 864e5;
@@ -360,7 +368,7 @@ if (location.protocol.startsWith("http") && "serviceWorker" in navigator) {
 let verrouEcran = null, verrouDepuis = 0;
 function etatEcran(texte) { $("ecran").textContent = texte; }
 async function garderEcranAllume() {
-  if (!("wakeLock" in navigator)) return etatEcran("");
+  if (!("wakeLock" in navigator)) return etatEcran("maintien allumé non pris en charge");
   if (document.visibilityState !== "visible") return;
   if (verrouEcran && !verrouEcran.released && Date.now() - verrouDepuis < 60000) return;
   try {
