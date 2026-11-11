@@ -31,7 +31,13 @@ select { flex: 1; min-width: 0; padding: 10px; border-radius: 10px; border: 1px 
 .nav { width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--trait); background: var(--carte); font-size: 20px; }
 .etat { display: flex; justify-content: space-between; margin-top: 6px; font-size: 14px; color: var(--doux); }
 .etat b { color: var(--texte); font-size: 18px; }
-main { padding: 12px 12px 120px; max-width: 720px; margin: 0 auto; }
+main { padding: 12px 34px 120px 12px; max-width: 720px; margin: 0 auto; }
+/* barre de défilement toujours visible : iOS masque la sienne. Zone tactile large, trait fin */
+#defil { position: fixed; right: 0; width: 30px; z-index: 4; touch-action: none; }
+#defil::before { content: ""; position: absolute; top: 0; bottom: 0; right: 9px; width: 4px; border-radius: 2px; background: var(--trait); }
+#poignee { position: absolute; right: 5px; width: 12px; min-height: 36px; border-radius: 6px; background: var(--accent); opacity: .8; }
+optgroup { color: var(--doux); }
+option.corrigee { color: var(--doux); }
 h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--doux); margin: 22px 4px 8px; }
 .q { background: var(--carte); border: 1px solid var(--trait); border-radius: 14px; padding: 12px; margin-bottom: 10px; }
 .q.vide { border-left: 4px solid var(--accent); }
@@ -95,6 +101,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
     <div id="rappel" class="rappel cache"></div>
   </header>
   <main id="questions"></main>
+  <div id="defil" aria-hidden="true"><div id="poignee"></div></div>
   <footer>
     <button class="second" onclick="document.getElementById('menu').showModal()">Menu</button>
     <button class="second" onclick="ouvrirInfos()">Infos</button>
@@ -166,7 +173,7 @@ function charger(donnees) {
   $("menuTitre").textContent = ds.titre;
   document.title = ds.titre;
   const sel = $("eleve");
-  sel.innerHTML = ds.eleves.map(e => `<option value="${e}">${e}</option>`).join("");
+  sel.dataset.html = ""; libelles();
   sel.value = lireStock("saisie:eleve:" + ds.titre, ds.eleves[0]) || ds.eleves[0];
   afficher();
 }
@@ -207,12 +214,17 @@ function noteSur20(e) {
 }
 const nbSaisies = e => ds.questions.filter(q => (notes[e] || {})[q.ligne] !== undefined).length;
 
+const corrigee = e => verrouille(e) || nbSaisies(e) === ds.questions.length;
+
 function libelles() {
-  const sel = $("eleve");
-  for (const o of sel.options) {
-    const n = nbSaisies(o.value);
-    o.textContent = (n === ds.questions.length ? "✓ " : n ? "… " : "") + o.value;
-  }
+  const sel = $("eleve"), courant = sel.value;
+  const option = e => {
+    const n = nbSaisies(e);
+    return `<option value="${e}"${corrigee(e) ? ' class="corrigee"' : ""}>${corrigee(e) ? "✓ " : n ? "… " : ""}${e}</option>`;
+  };
+  const html = `<optgroup label="À corriger">${ds.eleves.filter(e => !corrigee(e)).map(option).join("")}</optgroup>`
+    + `<optgroup label="Corrigées">${ds.eleves.filter(corrigee).map(option).join("")}</optgroup>`;
+  if (html !== sel.dataset.html) { sel.innerHTML = html; sel.dataset.html = html; sel.value = courant; }
 }
 
 function echapper(t) { return t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
@@ -240,6 +252,7 @@ function afficher() {
   $("questions").innerHTML = html;
   majEtat();
   window.scrollTo(0, 0);
+  majDefil();
 }
 
 function majEtat() {
@@ -311,6 +324,24 @@ function dessinerRepartition(liste) {
   for (let v = 0; v <= 20; v += 5) svg += `<text x="${v ? g + (v * 2 - 0.5) * l : g}" y="${h + 20}" text-anchor="middle">${v}</text>`;   // sous la barre de la note v
   $("repartition").innerHTML = svg;
 }
+
+function majDefil() {
+  const barre = $("defil"), haut = document.querySelector("header").offsetHeight, bas = document.querySelector("footer").offsetHeight;
+  barre.style.top = haut + 8 + "px"; barre.style.bottom = bas + 8 + "px";
+  const piste = barre.clientHeight, total = document.documentElement.scrollHeight, vue = innerHeight;
+  const p = $("poignee"), hp = Math.max(36, piste * vue / total);
+  p.style.height = hp + "px";
+  p.style.top = (total > vue ? scrollY / (total - vue) : 0) * (piste - hp) + "px";
+}
+function defilerVers(ev) {
+  const r = $("defil").getBoundingClientRect();
+  const ratio = Math.min(1, Math.max(0, (ev.clientY - r.top) / r.height));
+  window.scrollTo(0, ratio * (document.documentElement.scrollHeight - innerHeight));
+}
+$("defil").addEventListener("pointerdown", ev => { $("defil").setPointerCapture(ev.pointerId); defilerVers(ev); });
+$("defil").addEventListener("pointermove", ev => { if (ev.buttons || ev.pointerType === "touch") if ($("defil").hasPointerCapture(ev.pointerId)) defilerVers(ev); });
+addEventListener("scroll", majDefil, { passive: true });
+addEventListener("resize", majDefil);
 
 function decaler(d) {
   const sel = $("eleve");
