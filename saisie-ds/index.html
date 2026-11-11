@@ -44,7 +44,7 @@ h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: v
   background: var(--fond); border-radius: 8px; }
 .q.ouverte .reponse { display: block; }
 .voir { background: none; border: 0; color: var(--accent); padding: 4px 0; font-size: 14px; }
-.niveaux { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; }
+.niveaux { display: grid; grid-template-columns: .55fr 1fr 1fr 1fr; gap: 6px; margin-top: 8px; }
 .niv { min-height: 64px; border-radius: 10px; border: 1px solid var(--trait); background: var(--fond);
   padding: 6px 4px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
 .niv .n { font-size: 22px; font-weight: 700; }
@@ -69,6 +69,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
 .zeros { display: block; margin: 16px auto 0; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--trait);
   background: var(--carte); color: var(--doux); font-size: 14px; }
 #ecran { font-size: 12px; }
+#compteur { font-size: 12px; color: var(--doux); margin-top: 2px; }
 .cache { display: none !important; }
 </style>
 </head>
@@ -88,6 +89,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
       <button class="nav" onclick="decaler(1)" aria-label="Élève suivant">›</button>
     </div>
     <div class="etat"><span id="progression"></span><span id="ecran"></span><span>Note : <b id="note"></b> / 20</span></div>
+    <div id="compteur"></div>
     <div id="rappel" class="rappel cache"></div>
   </header>
   <main id="questions"></main>
@@ -221,8 +223,7 @@ function afficher() {
         <span class="n">${k}</span><span class="c">${k && q.niveaux[k] !== String(k) ? echapper(q.niveaux[k]) : ""}</span></button>`).join("")}</div>
     </section>`;
   }
-  const restantes = ds.questions.length - nbSaisies(e);
-  if (!bloque && restantes) html += `<button class="zeros" onclick="zerosRestants()">Mettre 0 aux ${restantes} question(s) non traitée(s)</button>`;
+  if (!bloque) html += `<button class="zeros" id="zeros" onclick="zerosRestants()"></button>`;
   $("questions").innerHTML = html;
   majEtat();
   window.scrollTo(0, 0);
@@ -232,6 +233,17 @@ function majEtat() {
   const e = $("eleve").value;
   $("note").textContent = String(noteSur20(e)).replace(".", ",");
   $("progression").textContent = `${nbSaisies(e)} / ${ds.questions.length} questions`;
+  const restantes = ds.questions.length - nbSaisies(e), z = $("zeros");
+  if (z) {
+    z.textContent = `Mettre 0 aux ${restantes} question(s) non traitée(s)`;
+    z.classList.toggle("cache", !restantes);
+  }
+  // « importées » : déjà dans l'ods (verrouillées) ; « sur l'appareil » : copies complètes saisies ici
+  const importees = ds.eleves.filter(verrouille).length;
+  const ici = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) === ds.questions.length).length;
+  const enCours = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) && nbSaisies(x) < ds.questions.length).length;
+  $("compteur").textContent = `Copies : ${importees} importée(s) dans Calc · ${ici} corrigée(s) ici`
+    + (enCours ? ` · ${enCours} en cours` : "") + ` · ${ds.eleves.length} au total`;
   libelles();
   const nb = nonExportees().length;
   const jours = (Date.now() - dernierExport) / 864e5;
