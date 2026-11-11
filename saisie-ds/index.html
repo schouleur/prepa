@@ -69,6 +69,10 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
 .zeros { display: block; margin: 16px auto 0; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--trait);
   background: var(--carte); color: var(--doux); font-size: 14px; }
 #infos p { margin: 6px 0; }
+#repartition { width: 100%; height: auto; display: block; margin: 4px 0 8px; }
+#repartition .barre { fill: var(--accent); }
+#repartition text { fill: var(--doux); font-size: 17px; }
+#repartition line { stroke: var(--trait); }
 .cache { display: none !important; }
 </style>
 </head>
@@ -93,7 +97,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
   <main id="questions"></main>
   <footer>
     <button class="second" onclick="document.getElementById('menu').showModal()">Menu</button>
-    <button class="second" onclick="document.getElementById('infos').showModal()">Infos</button>
+    <button class="second" onclick="ouvrirInfos()">Infos</button>
     <button onclick="exporter()">Exporter</button>
   </footer>
 </div>
@@ -111,6 +115,7 @@ dialog .ligne { margin-top: 10px; flex-wrap: wrap; }
 <dialog id="infos">
   <h3>Infos</h3>
   <p id="compteur"></p>
+  <svg id="repartition" viewBox="0 0 400 140" role="img" aria-label="Répartition des notes"></svg>
   <p>Écran : <span id="ecran">pas encore demandé (touche la page)</span></p>
   <div class="ligne">
     <button class="gros" style="background:var(--carte);color:var(--texte);border:1px solid var(--trait)" onclick="this.closest('dialog').close()">Fermer</button>
@@ -246,12 +251,6 @@ function majEtat() {
     z.textContent = `Mettre 0 aux ${restantes} question(s) non traitée(s)`;
     z.classList.toggle("cache", !restantes);
   }
-  // « importées » : déjà dans l'ods (verrouillées) ; « sur l'appareil » : copies complètes saisies ici
-  const importees = ds.eleves.filter(verrouille).length;
-  const ici = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) === ds.questions.length).length;
-  const enCours = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) && nbSaisies(x) < ds.questions.length).length;
-  $("compteur").innerHTML = `Copies importées dans Calc : <b>${importees}</b><br>Copies corrigées sur cet appareil : <b>${ici}</b>`
-    + (enCours ? `<br>Copies en cours : <b>${enCours}</b>` : "") + `<br>Total : ${ds.eleves.length} élèves`;
   libelles();
   const nb = nonExportees().length;
   const jours = (Date.now() - dernierExport) / 864e5;
@@ -283,6 +282,34 @@ function zerosRestants() {
   for (const q of restantes) notes[e][q.ligne] = 0;
   sauver();
   const y = window.scrollY; afficher(); window.scrollTo(0, y);
+}
+
+function ouvrirInfos() {
+  // « importées » : déjà dans l'ods (verrouillées) ; « non importées » : copies complètes saisies ici
+  const importees = ds.eleves.filter(verrouille);
+  const ici = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) === ds.questions.length);
+  const enCours = ds.eleves.filter(x => !verrouille(x) && nbSaisies(x) && nbSaisies(x) < ds.questions.length).length;
+  const notesCopies = [...importees, ...ici].map(noteSur20);
+  const moyenne = notesCopies.length ? notesCopies.reduce((a, b) => a + b, 0) / notesCopies.length : null;
+  const virgule = x => String(Math.round(x * 100) / 100).replace(".", ",");
+  $("compteur").innerHTML = `Copies importées dans Calc : <b>${importees.length}</b><br>Copies corrigées non importées : <b>${ici.length}</b>`
+    + (enCours ? `<br>Copies en cours : <b>${enCours}</b>` : "")
+    + `<br>Moyenne des copies corrigées : <b>${moyenne === null ? "–" : virgule(moyenne)}</b> / 20`;
+  dessinerRepartition(notesCopies);
+  $("infos").showModal();
+}
+
+// histogramme par demi-point de 0,5 à 20, comme le graphique de la feuille « liste »
+function dessinerRepartition(liste) {
+  const effectifs = Array(40).fill(0);
+  for (const n of liste) if (n > 0) effectifs[Math.round(n * 2) - 1]++;
+  const max = Math.max(1, ...effectifs), g = 24, d = 392, h = 114, l = (d - g) / 40;
+  let svg = `<line x1="${g}" y1="${h}" x2="${d}" y2="${h}"/><text x="${g - 6}" y="18" text-anchor="end">${max}</text>`;
+  effectifs.forEach((n, i) => {
+    if (n) { const y = h - n / max * (h - 10); svg += `<rect class="barre" x="${g + i * l + 1}" y="${y}" width="${l - 2}" height="${h - y}"/>`; }
+  });
+  for (let v = 0; v <= 20; v += 5) svg += `<text x="${v ? g + (v * 2 - 0.5) * l : g}" y="${h + 20}" text-anchor="middle">${v}</text>`;   // sous la barre de la note v
+  $("repartition").innerHTML = svg;
 }
 
 function decaler(d) {
